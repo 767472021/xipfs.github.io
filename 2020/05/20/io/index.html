@@ -29,8 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Schrödinger's Code" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Schrödinger's Code" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -498,9 +498,9 @@
             <div id="articleContent">
                 <p>文件 I/O 的性能对数据库系统的性能有直接的影响，我们需要全面了解和掌握文件I/O。</p>
 <h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>Linux 文件系统采用分层设计，对不同层进行抽象达到架构清晰、解耦的作用。</p>
-<h3 id="Linux-Storage-Stack"><a href="#Linux-Storage-Stack" class="headerlink" title="Linux Storage Stack"></a>Linux Storage Stack</h3><img src="/source/images/2015/Linux-storage-stack-diagram_v4.10.png">
+<h3 id="Linux-Storage-Stack"><a href="#Linux-Storage-Stack" class="headerlink" title="Linux Storage Stack"></a>Linux Storage Stack</h3><img src="/images/2015/Linux-storage-stack-diagram_v4.10.png">
 
-<h2 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h2><img src="/source/images/2015/disk_26.png">
+<h2 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h2><img src="/images/2015/disk_26.png">
 
 <p>HDD 和早期 SSD 绝大多数都是使用 SATA 接口，跑的是 AHCI（Advanced Host Controller Interface），它是由Intel联合多家公司研发的系统接口标准。AHCI 支持 NCQ（Native Command Queuing）功能和热插拔技术。NCQ 最大深度为32，即主机可以发最多32条命令给 HDD 或者 SSD 执行，跟之前硬盘只能一条命令一条命令执行相比，硬盘性能大幅提升。</p>
 <p>这在 HDD 时代，或者 SSD 早期，AHCI 协议和 SATA 接口足够满足系统性能需求，因为整个系统性能瓶颈在硬盘端（低速，高延时），而不是在协议和接口端。然而，随着 SSD 技术的飞速发展，SSD 盘的性能飙升，底层闪存带宽越来越宽，介质访问延时越来越低，系统性能瓶颈已经由下转移到上面的接口和协议处了。AHCI 和 SATA已经不能满足高性能和低延时 SSD 的需求，因此 SSD 迫切需要自己更快、更高效的协议和接口。</p>
@@ -513,26 +513,26 @@
 <p>控制器方面，从 SATA SSD 发展成 PCIe SSD，原生 PCIe 主控与 CPU 直接相连，而不是传统方式，通过南桥控制器中转，再连接 CPU，因此基于 PCIe 的 SSD 时延更低；</p>
 <p>软件接口方面，NVMe 缩短了 CPU 到 SSD 的指令路径，比如 NVMe 减少了对寄存器的访问次数；MSI-X 和中断管理的应用；并行&amp;多线程优化，NVMe 减少了各个 CPU 核之间的锁同步操作。</p>
 <p>所以基于 PCIe+NVMe 的SSD，具有非常低的延时。</p>
-<img src="/source/images/2015/nvme1.png">
+<img src="/images/2015/nvme1.png">
 
 <p><strong>高性能（Throughput &amp; IOPS）</strong></p>
 <p>理论上，IOPS=队列深度/ IO延迟，故 IOPS 的性能，与队列深度有较大的关系（但 IOPS 并不与队列深度成正比，因为实际应用中，随着队列深度的增大，IO 延迟也会提高）。市面上性能不错的 SATA 接口 SSD，在队列深度上都可以达到32，然而这也是 AHCI 所能做到的极限。但目前高端的企业级 PCIe SSD，其队列深度可能要达到128，甚至是256才能够发挥出最高的 IOPS 性能。而 NVMe 标准下，最大的队列深度可达64K。此外，NVMe 的队列数量也从 AHCI 的1，提高到了64K。</p>
 <p>PCIe 接口本身在性能上碾压 SATA，再加上 NVMe具有比AHCI 更深、更宽的命令队列，NVMe SSD 在性能上秒杀 SATA SSD 是水到渠成的事情。图是 NVMe SSD，SAS SSD和SATA SSD 性能对比图：</p>
-<img src="/source/images/2015/nvme2.png">
+<img src="/images/2015/nvme2.png">
 
 <p><strong>低功耗</strong></p>
 <p>NVMe加入了自动功耗状态切换和动态能耗管理功能</p>
 <h3 id="硬盘分类"><a href="#硬盘分类" class="headerlink" title="硬盘分类"></a>硬盘分类</h3><p>硬盘的种类比较多，若是按照硬盘接口类型的不同来分，大致可以分为 IDE 硬盘、SATA 硬盘、SCSI 硬盘、移动硬盘、固态硬盘。<br> 硬盘按照其工作形式的不同可以分为两种，一种是机械硬盘，另一种是固态硬盘。比较常见的机械硬盘按照其接口形式的不同可以分为 IDE 硬盘、SATA 硬盘、SCSI 硬盘三种。</p>
 <p><strong>IDE 硬盘</strong></p>
-<img src="/source/images/2015/disk_10.png">
+<img src="/images/2015/disk_10.png">
 
 <p>IDE（Integrated Drive Electronics）硬盘是指采用 IDE 接口的硬盘。如图，为 IDE 硬盘。IDE 是所有现存并行 ATA 接口规格的统称。这种硬盘相对来说价格低廉、兼容性强、工作稳定、容量大、噪音低，应用比较多。但是，这种硬盘采用并行数据传输方式，传输速度的不断提升使得信号干扰逐渐变强，不利于数据的传输。</p>
 <p><strong>SATA 硬盘</strong></p>
-<img src="/source/images/2015/disk_11.png">
+<img src="/images/2015/disk_11.png">
 
 <p>SATA（Serial Advande Technology Attachment）硬盘是指采用 SATA 接口的硬盘，如图，为 SATA 硬盘。SATA 接口采用串行数据传输方式，理论上传输速度比 IDE 接口要快很多，解决了IDE硬盘数据传输信号干扰限制传输速率的问题，并且采用该接口的硬盘支持热插拔，执行率也很高。</p>
 <p><strong>SCSI 硬盘</strong></p>
-<img src="/source/images/2015/disk_12.png">
+<img src="/images/2015/disk_12.png">
 
 <p>SCSI（Small Computer System Interface）硬盘就是采用SCSI接口的硬盘，采用这种接口的硬盘主要用于服务器，如图为SCIS硬盘。这种接口共有50针，外观和普通硬盘接口有些相似。SCSI硬盘和普通IDE硬盘相比有很多优点：接口速度快，并且由于主要用于服务器，因此硬盘本身的性能也比较高，硬盘转速快，缓存容量大，CPU占用率低，扩展性远优于IDE硬盘，并且同样支持热插拔。</p>
 <p><strong>固态硬盘</strong></p>
@@ -636,21 +636,21 @@
 <h4 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h4><p>硬盘的物理结构可分为外部结构和内部结构。</p>
 <h5 id="外部结构"><a href="#外部结构" class="headerlink" title="外部结构"></a>外部结构</h5><p>硬盘的外部结构主要包括金属固定面板、控制电路板和接口三部分。</p>
 <p><strong>金属固定面板</strong><br>硬盘外部会有一个金属的面板，用于保护整个硬盘。<br>金属面板和地板结合成一个密封的整体，保证硬盘盘体和机构的稳定运行。</p>
-<img src="/source/images/2015/disk_1.png">
+<img src="/images/2015/disk_1.png">
 
 <p><strong>控制电路板</strong></p>
 <p>控制电路板上的电子元器件大多采用贴片式元件焊接，这些电子元器件组成了功能不同的电子电路，这些电路包括主轴调速电路、磁头驱动与伺服定位电路、读写电路、控制与接口电路等。在电路板上有几个主要的芯片：主控芯片、BIOS芯片、缓存芯片、电机驱动芯片。</p>
-<img src="/source/images/2015/disk_2.png">
+<img src="/images/2015/disk_2.png">
 
 <p><strong>接口</strong></p>
 <p>在硬盘的顶端会有几个不同的硬盘接口，这些接口主要包括电源插座接口、数据接口和主、从跳线接口，其中电源插口与主机电源相联，为硬盘工作提供电力保证。中间的主、从盘跳线接口，用以设置主、从硬盘，即设置硬盘驱动器的访问顺序。</p>
-<img src="/source/images/2015/disk_3.png">
+<img src="/images/2015/disk_3.png">
 
 <h5 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h5><p>硬盘内部主要包括磁头组件、磁头驱动组件、盘体、主轴组件、前置控制电路等。</p>
-<img src="/source/images/2015/disk_4.png">
+<img src="/images/2015/disk_4.png">
 
 <p><strong>磁头组件</strong><br>磁头组件包括读写磁头、传动手臂、传动轴三部分组成。</p>
-<img src="/source/images/2015/disk_5.png">
+<img src="/images/2015/disk_5.png">
 
 <p>磁头组件中最主要的部分是磁头，另外的两个部分可以看作是磁头的辅助装置。传动轴带动传动臂，使磁头到达指定的位置。<br>磁头是硬盘中对盘片进行读写工作的工具，是硬盘中最精密的部位之一。磁头是用线圈缠绕在磁芯上制成的，工作原理则是利用特殊材料的电阻值会随着磁场变化的原理来读写盘片上的数据。硬盘在工作时，磁头通过感应旋转的盘片上磁场的变化来读取数据；通过改变盘片上的磁场来写入数据。为避免磁头和盘片的磨损，在工作状态时，磁头悬浮在高速转动的盘片上方，间隙只有0.1~0.3um，而不是盘片直接接触，在电源关闭之后，磁头会自动回到在盘片上着陆区，此处盘片并不存储数据，是盘片的起始位置。</p>
 <p><strong>磁头驱动组件</strong></p>
@@ -664,23 +664,23 @@
 <blockquote>
 <p>存储容量 = 磁头数 * 磁道（柱面）数 * 每道扇区数 * 每扇区字节数</p>
 </blockquote>
-<img src="/source/images/2015/disk_6.png">
+<img src="/images/2015/disk_6.png">
 
 <p>查看 ubuntu 磁盘信息 </p>
 <pre class=" language-shell"><code class="language-shell">sudo fdisk -l /dev/mapper/ubuntu--vg-root</code></pre>
-<img src="/source/images/2015/disk_13.png">
+<img src="/images/2015/disk_13.png">
 
-<h5 id="磁道"><a href="#磁道" class="headerlink" title="磁道"></a>磁道</h5><img src="/source/images/2015/disk_7.png">
+<h5 id="磁道"><a href="#磁道" class="headerlink" title="磁道"></a>磁道</h5><img src="/images/2015/disk_7.png">
 
 <p>当磁盘旋转时，磁头若保持在一个位置上，则每个磁头都会在磁盘表面划出一个圆形轨迹，这些圆形轨迹就叫磁道。磁道上的磁道是一组记录密度不同的同心圆，如图。磁表面存储器是在不同形状（如盘状、带状等）的载体上，涂有磁性材料层，工作时，靠载磁体高速运动，由磁头在磁层上进行读写操作，信息被记录在磁层上，这些信息的轨迹就是磁道。这些磁道用肉眼是根本看不到的，因为他们仅是盘面上以特殊方式磁化了的一些磁化区，磁盘上的信息便是沿着这样的轨道存放的。相邻磁道之间并不是紧挨着的，这是因为磁化单元相隔太近时磁性会产生相互影响，同时也为磁头的读写带来困难，通常盘片的一面有成千上万个磁道。</p>
-<h5 id="扇区"><a href="#扇区" class="headerlink" title="扇区"></a>扇区</h5><img src="/source/images/2015/disk_8.png" width="400px">
+<h5 id="扇区"><a href="#扇区" class="headerlink" title="扇区"></a>扇区</h5><img src="/images/2015/disk_8.png" width="400px">
 
 <p>分区格式化磁盘时，每个盘片的每一面都会划分很多同心圆的磁道，而且还会将每个同心圆进一步的分割为多个相等的圆弧，这些圆弧就是扇区。为什么要进行扇区的划分呢？因为，读取和写入数据的时候，磁盘会以扇区为单位进行读取和写入数据，即使电脑只需要某个扇区内的几个字节的文件，也必须一次把这几个字节的数据所在的扇区中的全部512字节的数据全部读入内存，然后再进行筛选所需数据，所以为了提高电脑的运行速度，就需要对硬盘进行扇区划分。另外，每个扇区的前后两端都会有一些特定的数据，这些数据用来构成扇区之间的界限标志，磁头通过这些界限标志来识别众多的扇区。</p>
 <p>扇区是硬盘的最小操作单位，但扇区对于操作系统来说还是太小了，一般操作系统有自己的硬盘操作最小单位，在 linux 下一般为 4k</p>
 <pre class=" language-shell"><code class="language-shell">xiehui@xiehui-desktop:~$ sudo tune2fs -l  /dev/mapper/ubuntu--vg-root | grep "Block size"
 Block size:               4096
 xiehui@xiehui-desktop:~$ </code></pre>
-<h5 id="柱面"><a href="#柱面" class="headerlink" title="柱面"></a>柱面</h5><img src="/source/images/2015/disk_9.png" width="400px">
+<h5 id="柱面"><a href="#柱面" class="headerlink" title="柱面"></a>柱面</h5><img src="/images/2015/disk_9.png" width="400px">
 
 <p>硬盘通常由一个或多个盘片构成，而且每个面都被划分为数目相等的磁道，并从外缘开始编号（即最边缘的磁道为0磁道，往里依次累加）。如此磁盘中具有相同编号的磁道会形成一个圆柱，此圆柱称为磁盘的柱面。磁盘的柱面数与一个盘面上的磁道数是相等的。由于每个盘面都有一个磁头，因此，盘面数等于总的磁头数。</p>
 <h4 id="访盘过程"><a href="#访盘过程" class="headerlink" title="访盘过程"></a>访盘过程</h4><p>即一次访盘请求（读/写）完成过程由三个动作组成：</p>
@@ -698,7 +698,7 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>HDD 顺序读写的性能远高于随机读写，我们需要充分利用这一特性。</p>
 <h3 id="SSD（Solid-State-Drives）"><a href="#SSD（Solid-State-Drives）" class="headerlink" title="SSD（Solid State Drives）"></a>SSD（Solid State Drives）</h3><p>SSD 用固态电子存储芯片列阵而制成的硬盘，如图，所示为固态硬盘，它主要由控制单元和存储单元（FLASH芯片）组成。固态硬盘的接口规范和定义、功能及使用方法上与普通硬盘的完全相同，在产品外形和尺寸上与普通硬盘几乎一致。固态硬盘的存储介质分为两种，一种是采用闪存（FLASH芯片）作为存储介质，另外一种是采用DRAM作为存储介质。</p>
 <h4 id="组成结构"><a href="#组成结构" class="headerlink" title="组成结构"></a>组成结构</h4><p>SSD 主要由主控制器，存储单元，缓存（可选），以及跟主机接口（诸如SATA，SAS, PCIe等）组成。</p>
-<img src="/source/images/2015/disk_14.png">
+<img src="/images/2015/disk_14.png">
 
 <h5 id="主控制器"><a href="#主控制器" class="headerlink" title="主控制器"></a>主控制器</h5><p>每个 SSD 都有一个控制器(controller)将存储单元连接到电脑，主控器可以通过若干个通道（channel）并行操作多块FLASH颗粒，类似 RAID0，大大提高底层的带宽。控制器是一个执行固件(firmware)代码的嵌入式处理器。主要功能如下：</p>
 <ul>
@@ -721,7 +721,7 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <li>USB</li>
 </ul>
 <h4 id="存储原理"><a href="#存储原理" class="headerlink" title="存储原理"></a>存储原理</h4><p>SSD内部一般使用 NAND Flash 来作为存储介质，其逻辑结构如下：</p>
-<img src="/source/images/2015/disk_15.png">
+<img src="/images/2015/disk_15.png">
 
 <p>SSD 中一般有多个 NAND Flash，每个 NAND Flash 包含多个  Block，每个Block 包含多个 Page。由于NAND 的特性，其存取都必须以 page 为单位，即每次读写至少是一个 page，通常地，每个 page 的大小为4k或者8k。另外，NAND还有一个特性是，其只能是读或写单个 page，但不能覆盖写如某个 page，必须先要清空里面的内容，再写入。由于清空内容的电压较高，必须是以 block 为单位。因此，没有空闲的 page 时，必须要找到没有有效内容的 block，先擦写，然后再选择空闲的 page 写入。</p>
 <p>操作系统通常将硬盘理解为一连串 512B 大小的<strong>扇区</strong>[注意：操作系统对磁盘进行一次读或写的最小单位并不是扇区，而是文件系统的<strong>块</strong>，一般为 512B/1KB/4KB 之一(也可能更大)，其具体大小在格式化时设定]，但是闪存的读写单位是 4/8/16KB 大小的<strong>页</strong>，而且闪存的擦除(又叫编程)操作是按照 128 或 256 页大小的<strong>块</strong>来操作的。更要命的是写入数据前必须要先擦除整个块，而不能直接覆盖。这完全不符合现有的、针对传统硬盘设计的文件系统的操作方式，很明显，我们需要更高级、专门针对 SSD 设计的文件系统来适应这种操作方式。但遗憾的是，目前还没有这样的文件系统。</p>
@@ -742,7 +742,7 @@ xiehui@xiehui-desktop:~$ </code></pre>
 </ul>
 <p>SSD的写分为新写入和更新两种，处理流程不同。</p>
 <p><strong>新写入的数据的流程</strong></p>
-<img src="/source/images/2015/disk_16.png">
+<img src="/images/2015/disk_16.png">
 
 <p>假设新写入了一个page，其流程如下：</p>
 <ul>
@@ -751,7 +751,7 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <li>更新mapping table</li>
 </ul>
 <p><strong>更新操作的流程</strong></p>
-<img src="/source/images/2015/disk_17.png">
+<img src="/images/2015/disk_17.png">
 
 <p>假设是更新了page G 中的某些字节，流程如下：</p>
 <ul>
@@ -768,10 +768,10 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <p>尽管磨损均衡的目的是避免数据重复在某个空间写入，以保证各个存储区域内磨损程度基本一致，从而达到延长固态硬盘的目的。但是，它对固态硬盘的性能有不利影响。</p>
 <p>以一个例子，说明损耗均衡控制的重要性：</p>
 <p>假如一个 NAND Flash 总共有 4096个block，每个 block 的擦写次数最大为10000。其中有3个文件，每个文件占用50个block，平均10分钟更新1个文件，假设没有均衡控制，那么只会3 * 50 + 50共200个block，则这个SSD的寿命如下：</p>
-<img src="/source/images/2015/disk_18.png">
+<img src="/images/2015/disk_18.png">
 
 <p>大约为278天。而如果是完美的损耗均衡控制，即4096个block都均衡地参与更新，则使用寿命如下：</p>
-<img src="/source/images/2015/disk_19.png">
+<img src="/images/2015/disk_19.png">
 
 <p>大约5689天。因此，设计一个好的损耗均衡控制算法是非常有必要的，主流的方法主要有两种：</p>
 <ul>
@@ -794,9 +794,9 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <li>更高的能耗</li>
 </ul>
 <h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><p>由前面的磨损平衡机制知道，磨损平衡的执行需要有“空白块”来写入更新后的数据。当可以直接写入数据的“备用空白块”数量低于一个阀值后，SSD 主控制器就会把那些包含无效数据的块里的所有有效数据合并起来写到新的“空白块”中，然后擦除这个块以增加“备用空白块”的数量。这个操作就是 SSD 的垃圾回收。</p>
-<img src="/source/images/2015/gc_1.jpg" width="400px">
+<img src="/images/2015/gc_1.jpg" width="400px">
 
-<img src="/source/images/2015/gc_2.jpg" width="400px">
+<img src="/images/2015/gc_2.jpg" width="400px">
 
 <p>有三种垃圾回收策略：</p>
 <ol>
@@ -824,14 +824,14 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <p>第一层为固定的7.37%，这个数字是如何得出的哪？我们知道机械硬盘和 SSD 的厂商容量是这样算的，1GB 是1,000,000,000字节(10的9 次方)，但是闪存的实际容量是每 GB=1,073,741,824，(2的30次方) ，两者相差7.37%。所以说假设1块 128GB 的 SSD，用户得到的容量是 128,000,000,000 字节，多出来的那个 7.37% 就被主控固件用做OP了。</p>
 <p>第二层来自制造商的设置，通常为 0%，7%，28% 等，打个比方，对于 128G 颗粒的 SandForce 主控 SSD，市场上会有 120G 和 100G 两种型号卖，这个取决于厂商的固件设置，这个容量不包括之前的第一层 7.37% 。</p>
 <p>第三层是用户在日常使用中可以分配的预留空间，用户可以在分区的时候，不分到完全的 SSD 容量来达到这个目的。不过需要注意的是，需要先做安全擦除(Secure Erase)，以保证此空间确实没有被使用过。</p>
-<img src="/source/images/2015/op_1.jpg" width="400px">
+<img src="/images/2015/op_1.jpg" width="400px">
 
 <p>预留空间虽然让 SSD 的可用容量小了，但是带来了减少写入放大、提高耐久性、提高性能的效果。根据经验，预留空间在 20%-35% 之间是最佳平衡点。</p>
 <p>以一个例子，说明 SSD 的预留空间和 GC：</p>
-<img src="/source/images/2015/disk_20.png">
+<img src="/images/2015/disk_20.png">
 
 <p>如上图所示，假设系统中就两个 block，最终还剩下两个无效的 page，此时，要写入一个新 page，根据 NAND 原理，必须要先对两个无效的 page 擦除才能用于写入。此时，就需要用到 SSD 提供的额外空间，才能用 GC 方法整理出可用空间。</p>
-<img src="/source/images/2015/disk_21.png" width="400px">
+<img src="/images/2015/disk_21.png" width="400px">
 
 <p>GC 的整理流程如上图所示</p>
 <ul>
@@ -862,7 +862,7 @@ xiehui@xiehui-desktop:~$ </code></pre>
 <li>磨损平衡机制直接提高了写入放大</li>
 </ol>
 <h4 id="SSD-读写速度"><a href="#SSD-读写速度" class="headerlink" title="SSD 读写速度"></a>SSD 读写速度</h4><p>从软件开发人员作为 SSD 的用户角度来讲，首先需要了解的是 SSD 和普通 HDD 的性能对比，如下：</p>
-<img src="/source/images/2015/disk_27.png">
+<img src="/images/2015/disk_27.png">
 
 <p><strong>顺序读和顺序写</strong></p>
 <p>HDD 的顺序读速度差不多为最慢的  SSD的一半，顺序写稍微好点，但也比大部分慢一倍左右的速度。</p>
@@ -916,7 +916,7 @@ zero_buffers             用0初始化系统buffer。</code></pre>
 <pre class=" language-shell"><code class="language-shell">fio -filename=/tmp/test_randread -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=16k -size=30G -numjobs=10 -runtime=600 -group_reporting -name=mytest -ioscheduler=noop</code></pre>
 <h4 id="IOPS-和-吞吐量"><a href="#IOPS-和-吞吐量" class="headerlink" title="IOPS 和 吞吐量"></a><strong>IOPS 和 吞吐量</strong></h4><p>为何随机是关注IOPS，顺序关注吞吐量？</p>
 <p>因为随机读写的话，每次IO操作的寻址时间和旋转延时都不能忽略不计，而这两个时间的存在也就限制了IOPS的大小；而顺序读写可以忽略不计寻址时间和旋转延时，主要花费在数据传输的时间上。</p>
-<h2 id="分层详解"><a href="#分层详解" class="headerlink" title="分层详解"></a>分层详解</h2><img src="/source/images/2015/Linux.IO.stack_v1.0.png">
+<h2 id="分层详解"><a href="#分层详解" class="headerlink" title="分层详解"></a>分层详解</h2><img src="/images/2015/Linux.IO.stack_v1.0.png">
 
 <p>程序处理文件的目的就是把数据写到磁盘或者从磁盘把数据读取到内存中, 我们先用程序将数据写入到磁盘中：</p>
 <pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span>  <span class="token string">&lt;stdio.h></span></span>
@@ -967,7 +967,7 @@ zero_buffers             用0初始化系统buffer。</code></pre>
 <li>Vectored I/O: <a href="https://linux.die.net/man/2/writev" target="_blank" rel="noopener">writev</a>, <a href="https://linux.die.net/man/2/readv" target="_blank" rel="noopener">readv</a></li>
 <li>Memory mapped I/O: <a href="http://man7.org/linux/man-pages/man2/open.2.html" target="_blank" rel="noopener">open</a>, <a href="http://man7.org/linux/man-pages/man2/mmap.2.html" target="_blank" rel="noopener">mmap</a>, <a href="http://man7.org/linux/man-pages/man2/msync.2.html" target="_blank" rel="noopener">msync</a>, <a href="http://man7.org/linux/man-pages/man2/munmap.2.html" target="_blank" rel="noopener">munmap</a></li>
 </ul>
-<h4 id="标准-I-O（Standard-I-O）"><a href="#标准-I-O（Standard-I-O）" class="headerlink" title="标准 I/O（Standard I/O）"></a>标准 I/O（Standard I/O）</h4><h5 id="缓存-I-O"><a href="#缓存-I-O" class="headerlink" title="缓存 I/O"></a>缓存 I/O</h5><img src="/source/images/2015/disk_28.png" width="400px">
+<h4 id="标准-I-O（Standard-I-O）"><a href="#标准-I-O（Standard-I-O）" class="headerlink" title="标准 I/O（Standard I/O）"></a>标准 I/O（Standard I/O）</h4><h5 id="缓存-I-O"><a href="#缓存-I-O" class="headerlink" title="缓存 I/O"></a>缓存 I/O</h5><img src="/images/2015/disk_28.png" width="400px">
 
 <p>大多数文件系统的默认 I/O 操作都是缓存 I/O。在 Linux 的缓存 I/O 机制中，操作系统会将 I/O 的数据缓存在文件系统的页缓存（ page cache ）中，也就是说，数据会先被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的地址空间。缓存 I/O 有以下这些优点：</p>
 <ul>
@@ -978,7 +978,7 @@ zero_buffers             用0初始化系统buffer。</code></pre>
 <p><strong>缓存 I/O 的缺点</strong></p>
 <p>在缓存 I/O 机制中，DMA 方式可以将数据直接从磁盘读到页缓存中，或者将数据从页缓存直接写回到磁盘上，而不能直接在应用程序地址空间和磁盘之间进行数据传输，这样的话，数据在传输过程中需要在应用程序地址空间和页缓存之间进行多次数据拷贝操作，这些数据拷贝操作所带来的 CPU 以及内存开销是非常大的。</p>
 <p>对于某些特殊的应用程序来说，避开操作系统内核缓冲区而直接在应用程序地址空间和磁盘之间传输数据会比使用操作系统内核缓冲区获取更好的性能。</p>
-<h5 id="直接-I-O"><a href="#直接-I-O" class="headerlink" title="直接 I/O"></a>直接 I/O</h5><img src="/source/images/2015/disk_29.png" width="400px">
+<h5 id="直接-I-O"><a href="#直接-I-O" class="headerlink" title="直接 I/O"></a>直接 I/O</h5><img src="/images/2015/disk_29.png" width="400px">
 
 <p>凡是通过直接 I/O 方式进行数据传输，数据均直接在用户地址空间的缓冲区和磁盘之间直接进行传输，完全不需要页缓存的支持。操作系统层提供的缓存往往会使应用程序在读写数据的时候获得更好的性能，但是对于某些特殊的应用程序，比如说数据库系统，它们更倾向于选择他们自己的缓存机制，因为数据库系统往往比操作系统更了解数据库中存放的数据，数据库系统可以提供一种更加有效的缓存机制来提高数据库中数据的存取性能。</p>
 <p>要在块设备中执行直接 I/O，进程必须在打开文件的时候设置对文件的访问模式为 <code>O_DIRECT</code>，这样就等于告诉操作系统进程在接下来使用 <code>read()</code> 或者 <code>write()</code> 系统调用去读写文件的时候使用的是直接 I/O 方式，所传输的数据均不经过操作系统内核缓存空间。使用直接 I/O 读写数据必须要注意缓冲区对齐（ buffer alignment ）以及缓冲区的大小的问题，即对应 <code>read()</code> 以及 <code>write()</code> 系统调用的第二个和第三个参数。这里边说的对齐指的是文件系统块大小的对齐，缓冲区的大小也必须是该块大小的整数倍。</p>
@@ -1078,7 +1078,7 @@ bad_write_buffer<span class="token punctuation">:</span>
 <p>O_DIRECT的详细描述，可以看linux open系统调用的<a href="http://man7.org/linux/man-pages/man2/open.2.html" target="_blank" rel="noopener">文档</a></p>
 <h4 id="AIO"><a href="#AIO" class="headerlink" title="AIO"></a>AIO</h4><p>Asynchronous I/O 帮助用户程序提高 CPU 和 IO 设备的利用率和提高程序性能，特别是在高负载的IO操作下。比如各种代理服务器，数据库，流服务器等等。</p>
 <p>很多人会将 AIO 理解成磁盘 IO 的异步方案，会将 AIO 狭隘化为类 epoll 接口在磁盘 IO 的特殊化，其实 AIO 应该是横架于整个内核的接口，它把所有的 IO 包括(本地设备，网络，管道等)以统一的异步接口提供给用户程序，每个子系统都针对接口实现自己的异步方案，而同步IO(Synchronous IO)只是在内核内部的”AIO+Blocking”.</p>
-<img src="/source/images/2015/disk_31.png" width="400px">
+<img src="/images/2015/disk_31.png" width="400px">
 
 <h5 id="Linux-Native-Aio"><a href="#Linux-Native-Aio" class="headerlink" title="Linux Native Aio"></a>Linux Native Aio</h5><p>由操作系统内核提供的AIO，头文件为<code>&lt;linux/aio_abi.h&gt;</code>。Native Aio 是真正的 AIO，完全非阻塞异步的，而不是用阻塞IO和线程池模拟。主要的几个系统调用为<code>io_submit/io_setup/io_getevents</code>。</p>
 <ul>
@@ -1091,7 +1091,7 @@ bad_write_buffer<span class="token punctuation">:</span>
 <li><strong>缺点</strong>：据说有一些 bug 和陷阱，一直未解决。</li>
 </ul>
 <h5 id="Libeio"><a href="#Libeio" class="headerlink" title="Libeio"></a>Libeio</h5><p>libev 的作者开发的 AIO 实现，与 gcc aio 类似也是使用阻塞IO+线程池实现的。优点与缺点参见上面。它与gcc aio 的不同之处，代码更简洁，所以 bug 少更安全稳定。但这是一个第三方库，你的代码需要依赖 libeio。</p>
-<h4 id="Vectored-IO"><a href="#Vectored-IO" class="headerlink" title="Vectored IO"></a>Vectored IO</h4><img src="/source/images/2015/disk_32.png" width="400px">
+<h4 id="Vectored-IO"><a href="#Vectored-IO" class="headerlink" title="Vectored IO"></a>Vectored IO</h4><img src="/images/2015/disk_32.png" width="400px">
 
 <p> Vectored IO（也称为Scatter / Gather）是一种可以在单次系统调用中对多个缓冲区输入输出的方法，可以把多个缓冲区的数据写到单个数据流，也可以把单个数据流读到多个缓冲区中。其命名的原因在于数据会被分散到指定缓冲区向量，或者从指定缓冲区向量中聚集数据。这种输入输出方法也称为向量 I/O（vector I/O）。与之不同，标准读写系统调用（read，write）可以称为线性I/O（linear I/O）。</p>
 <p>与线性 I/O 相比，分散/聚集 I/O 有如下几个优势：</p>
@@ -1135,12 +1135,12 @@ ssize_t <span class="token function">writev</span><span class="token punctuation
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>一组段的集合称为向量(vector)。每个段描述了内存中所要读写的缓冲区的地址和长度。readv() 函数在处理下个缓冲区之前，会填满当前缓冲区的 iov_len 个字节。write() 函数在处理下个缓冲区之前，会把当前缓冲区所有 iov_len 个字节数据输出，这两个函数都会顺序处理向量中的段，从 iov[0] 开始，接着是 iov[1]，一直到 iov[count - 1] 。</p>
 <p>目前只有很少的数据库使用 Vectored IO，毕竟它们要处理很多文件，关注延时，按块访问和缓存，而分析型或列式数据库比较适合使用 Vectored IO，比如： <a href="https://github.com/apache/arrow/blob/master/java/memory/src/main/java/io/netty/buffer/ArrowBuf.java#L26-L27" target="_blank" rel="noopener">Apache Arrow</a>。</p>
-<h4 id="Memory-Mapping"><a href="#Memory-Mapping" class="headerlink" title="Memory Mapping"></a>Memory Mapping</h4><img src="/source/images/2015/disk_30.png" width="400px">
+<h4 id="Memory-Mapping"><a href="#Memory-Mapping" class="headerlink" title="Memory Mapping"></a>Memory Mapping</h4><img src="/images/2015/disk_30.png" width="400px">
 
 <p> Linux 中内存区域（ memory region ）是可以跟一个普通的文件或者块设备文件的某一个部分关联起来的，若进程要访问内存页中某个字节的数据，操作系统就会将访问该内存区域的操作转换为相应的访问文件的某个字节的操作。Linux 中提供了系统调用 <code>mmap()</code> 来实现这种文件访问方式。与标准的访问文件的方式相比，内存映射方式可以减少标准访问文件方式中 <code>read()</code> 系统调用所带来的数据拷贝操作，即减少数据在用户地址空间和操作系统内核地址空间之间的拷贝操作。映射通常适用于较大范围，对于相同长度的数据来讲，映射所带来的开销远远低于 CPU 拷贝所带来的开销。当大量数据需要传输的时候，采用内存映射方式去访问文件会获得比较好的效率。数据库引擎中大量采用 mmap 的方式。</p>
 <p>用户调用<code>mmap</code>将文件映射到内存时，内核进行一系列的参数检查，然后创建对应的<code>vma</code>，然后给该<code>vma</code>绑定<code>vma_ops</code>。当用户访问到<code>mmap</code>对应的内存时，CPU会触发<code>page fault</code>，在<code>page fault</code>回调中，将申请<code>pagecache</code>中的匿名页，读取文件到其物理内存中，然后将<code>pagecache</code>中所属的物理页与用户进程的<code>vma</code>进行映射。</p>
 <p>其整个内核逻辑流程可以用下图来表示:</p>
-<img src="/source/images/2015/disk_33.png">
+<img src="/images/2015/disk_33.png">
 
 
 
@@ -1183,14 +1183,14 @@ The specified data will not be accessed in the near future<span class="token pun
 <li>由于仅分配内存并进行<code>mlock</code>系统调用后并不会为程序完全锁定这些内存，因为其中的分页可能是写时复制的。因此，就有必要对每个内存页面中写入一个假的值。比如：RocketMQ 是在创建并分配MappedFile 的过程中，预先写入一些随机值至<code>mmap</code>映射出的内存空间里。</li>
 <li>调用<code>mmap</code>进行内存映射后，OS 只是建立虚拟内存地址至物理地址的映射表，而实际并没有加载任何文件至内存中。程序要访问数据时OS会检查该部分的分页是否已经在内存中，如果不在，则发出一次缺页中断。这里，可以想象下1G的 CommitLog 需要发生多少次缺页中断，才能使得对应的数据才能完全加载至物理内存中。RocketMQ 的做法是，在做<code>mmap</code>内存映射的同时进行<code>madvise</code>系统调用，目的是使 OS 做一次内存映射后对应的文件数据尽可能多的预加载至内存中，从而达到内存预热的效果。</li>
 </ol>
-<h3 id="虚拟文件系统（VFS-）"><a href="#虚拟文件系统（VFS-）" class="headerlink" title="虚拟文件系统（VFS ）"></a>虚拟文件系统（VFS ）</h3><img src="/source/images/2015/disk_34.png" width="400px">
+<h3 id="虚拟文件系统（VFS-）"><a href="#虚拟文件系统（VFS-）" class="headerlink" title="虚拟文件系统（VFS ）"></a>虚拟文件系统（VFS ）</h3><img src="/images/2015/disk_34.png" width="400px">
 
 <p>VFS（Virtual File System）虚拟文件系统是一种软件机制，更确切的说扮演着文件系统管理者的角色，与它相关的数据结构只存在于物理内存当中。它的作用是：屏蔽下层具体文件系统操作的差异，为上层的操作提供一个统一的接口。正是因为有了这个层次，Linux 中允许众多不同的文件系统共存并且对文件的操作可以跨文件系统而执行。</p>
 <p>VFS 中包含着向物理文件系统转换的一系列数据结构，如 VFS 超级块、VFS 的 inode、各种操作函数的转换入口等。Linux 中 VFS 依靠四个主要的数据结构来描述其结构信息，分别为超级块、索引结点、目录项和文件对象。</p>
 <ol>
 <li>超级块（Super Block）：超级块对象表示一个文件系统。它存储一个已安装的文件系统的控制信息，包括文件系统名称（比如Ext2）、文件系统的大小和状态、块设备的引用和元数据信息（比如空闲列表等等）。VFS超级块存在于内存中，它在文件系统安装时建立，并且在文件系统卸载时自动删除。同时需要注意的是对于每个具体的文件系统来说，也有各自的超级块，它们存放于磁盘。</li>
 <li>索引结点（inode）：索引结点对象存储了文件的相关元数据信息，例如：文件大小、设备标识符、用户标识符、用户组标识符等等。inode 分为两种：一种是 VFS 的 inode，一种是具体文件系统的 inode。前者在内存中，后者在磁盘中。所以每次其实是将磁盘中的 inode调进填充内存中的 inode，这样才是算使用了磁盘文件 inode。当创建一个文件的时候，就给文件分配了一个 inode。一个 inode 只对应一个实际文件，一个文件也会只有一个 inode。</li>
-<li>目录项（Dentry）：引入目录项对象的概念主要是出于方便查找文件的目的。不同于前面的两个对象，目录项对象没有对应的磁盘数据结构，只存在于内存中。一个路径的各个组成部分，不管是目录还是普通的文件，都是一个目录项对象。如，在路径<code>/home/source/test.java</code>中，目录 /, home, source和文件 test.java 都对应一个目录项对象。VFS 在查找的时候，根据一层一层的目录项找到对应的每个目录项的Inode，那么沿着目录项进行操作就可以找到最终的文件。</li>
+<li>目录项（Dentry）：引入目录项对象的概念主要是出于方便查找文件的目的。不同于前面的两个对象，目录项对象没有对应的磁盘数据结构，只存在于内存中。一个路径的各个组成部分，不管是目录还是普通的文件，都是一个目录项对象。如，在路径<code>/home/test.java</code>中，目录 /, home, source和文件 test.java 都对应一个目录项对象。VFS 在查找的时候，根据一层一层的目录项找到对应的每个目录项的Inode，那么沿着目录项进行操作就可以找到最终的文件。</li>
 <li>文件对象（File）：文件对象描述的是进程已经打开的文件。因为一个文件可以被多个进程打开，所以一个文件可以存在多个文件对象。一个文件对应的文件对象可能不是惟一的，但是其对应的索引节点和目录项对象肯定是惟一的。</li>
 </ol>
 <p>详细的分析可以参见：<a href="/assets/book/linux/Linux.Virtual.Filesystem.pdf">inux虚拟文件系统</a></p>
@@ -1304,13 +1304,13 @@ tmpfs                       tmpfs       792544     2112    790432    1% /run
 <p>这个选项改善了文件系统的完整性，但损失了一些性能。</p>
 <p>文件系统在写入数据之前必须先将事务信息记录到日志，然后根据顺序写入，但是这种方式效率比较低。现代的驱动有很大的内部缓存并且为了得到更好的性能会进行操作重排序，所以在写入数据之前，文件系统必须先显式的指示磁盘加载所有的日志。</p>
 <p>内核的 阻塞 I/O 子系统使用屏障来实现，即在加载日志时进行阻塞，其他数据 I/O 操作就无法再进行了。</p>
-<h3 id="通用块层"><a href="#通用块层" class="headerlink" title="通用块层"></a>通用块层</h3><img src="/source/images/2015/disk_35.png">
+<h3 id="通用块层"><a href="#通用块层" class="headerlink" title="通用块层"></a>通用块层</h3><img src="/images/2015/disk_35.png">
 
 <p>通用块层的主要工作是：接收上层发出的磁盘请求，并最终发出 I/O 请求。该层隐藏了底层硬件块设备的特性，为块设备提供了一个通用的抽象视图。</p>
 <p>对于 VFS 和具体的文件系统来说，块（Block）是基本的数据传输单元，当内核访问文件的数据时，它首先从磁盘上读取一个块。但是对于磁盘来说，扇区是最小的可寻址单元，块设备无法对比它还小的单元进行寻址和操作。由于扇区是磁盘的最小可寻址单元，所以块不能比扇区还小，只能整数倍于扇区大小，即一个块对应磁盘上的一个或多个扇区。一般来说，块大小是2的整数倍，而且由于 Page Cache 层的最小单元是页（Page），所以块大小不能超过一页的长度。</p>
 <p>大多情况下，数据的传输通过 DMA 方式。旧的磁盘控制器，仅仅支持简单的 DMA 操作：每次数据传输，只能传输磁盘上相邻的扇区，即数据在内存中也是连续的。这是因为如果传输非连续的扇区，会导致磁盘花费更多的时间在寻址操作上。而现在的磁盘控制器支持“分散/聚合”DMA操作，这种模式下，数据传输可以在多个非连续的内存区域中进行。为了利用“分散/聚合”DMA操作，块设备驱动必须能处理被称为段（segments）的数据单元。一个段就是一个内存页面或一个页面的部分，它包含磁盘上相邻扇区的数据。</p>
 <p>通用块层是粘合所有上层和底层的部分，一个页的磁盘数据布局如下图所示：</p>
-<img src="/source/images/2015/1.jpeg">
+<img src="/images/2015/1.jpeg">
 
 <p>详细的分析可以参见：<a href="/assets/book/linux/Linux.Generic.Block.Layer.pdf">Linux通用块设备层</a></p>
 <h3 id="I-O调度层"><a href="#I-O调度层" class="headerlink" title="I/O调度层"></a>I/O调度层</h3><p>I/O调度层的功能是管理块设备的请求队列。即接收通用块层发出的I/O请求，缓存请求并试图合并相邻的请求。并根据设置好的调度算法，回调驱动层提供的请求处理函数，以处理具体的 I/O 请求。</p>
@@ -1331,36 +1331,36 @@ tmpfs                       tmpfs       792544     2112    790432    1% /run
 <p>文件操作对应的偏移存储于struct file中，每个open的文件单独维护一份，同一个文件的读写操作共享同一个偏移。</p>
 </blockquote>
 <p>其整个内核逻辑流程可以用下图来表示：</p>
-<img src="/source/images/2015/disk_36.png">
+<img src="/images/2015/disk_36.png">
 
 <h3 id="write"><a href="#write" class="headerlink" title="write"></a>write</h3><p><code>write</code>的写逻辑路径有好几条，最常使用的就是利用<code>pagecache</code>延迟写的这条路径，所以主要分析这个。在<code>write</code>调用的调用、返回之间，其负责分配新的<code>pagecache</code>，将数据写入<code>pagecache</code>，同时根据系统参数，判断<code>pagecache</code>中的脏数据占比来确定是否要触发回写逻辑。其详细的代码分析可以参考：<a href="/assets/book/linux/Linux.Kernel.Write.Procedure.pdf">《Linux内核写文件过程》</a>和<a href="/assets/book/linux/Linux.Kernel.Delay.Write.pdf">《Linux内核延迟写机制》</a>。</p>
 <p>其整个内核逻辑流程可以用下图来表示：</p>
-<img src="/source/images/2015/disk_37.png">
+<img src="/images/2015/disk_37.png">
 
 <h3 id="read"><a href="#read" class="headerlink" title="read"></a>read</h3><p><code>read</code>的读逻辑中包含预期<code>readahead</code>的逻辑，其可以通过与<code>fadvise</code>的配合达到文件预取的效果。这部分的代码分析可以参考：<a href="/assets/book/linux/Linux.Kernel.Read.Procedure.pdf">《Linux内核读文件过程》</a></p>
 <p>其整个内核逻辑流程可以用下图来表示：</p>
-<img src="/source/images/2015/disk_38.png">
+<img src="/images/2015/disk_38.png">
 
 <h3 id="fsync-fdatasync"><a href="#fsync-fdatasync" class="headerlink" title="fsync/fdatasync"></a>fsync/fdatasync</h3><p><code>fsync</code>和<code>fdatasync</code>主要逻辑流程基本相同。其通过触发对应文件的<code>pagecache</code>脏页回写，并且阻塞等待到回写逻辑完成，以达到同步数据的目的。</p>
 <p>其整个内核逻辑流程可以用下图来表示：</p>
-<img src="/source/images/2015/disk_39.png">
+<img src="/images/2015/disk_39.png">
 
 <h3 id="mmap"><a href="#mmap" class="headerlink" title="mmap"></a>mmap</h3><p>用户调用<code>mmap</code>将文件映射到内存时，内核进行一系列的参数检查，然后创建对应的<code>vma</code>，然后给该<code>vma</code>绑定<code>vma_ops</code>。当用户访问到<code>mmap</code>对应的内存时，CPU会触发<code>page fault</code>，在<code>page fault</code>回调中，将申请<code>pagecache</code>中的匿名页，读取文件到其物理内存中，然后将<code>pagecache</code>中所属的物理页与用户进程的<code>vma</code>进行映射。</p>
 <p>其整个内核逻辑流程可以用下图来表示，其中<code>page fault</code>部分比较简略，可以参考<a href="/assets/book/linux/linux-page-fault/">Linux Page Fault(缺页异常)</a>： </p>
-<img src="/source/images/2015/disk_40.png">
+<img src="/images/2015/disk_40.png">
 
-<h3 id="munmap"><a href="#munmap" class="headerlink" title="munmap"></a>munmap</h3><img src="/source/images/2015/disk_41.png">
+<h3 id="munmap"><a href="#munmap" class="headerlink" title="munmap"></a>munmap</h3><img src="/images/2015/disk_41.png">
 
 <h3 id="msync"><a href="#msync" class="headerlink" title="msync"></a>msync</h3><p><code>msync</code>的实际实现与其手册中的描述有很大不同，其调用时，<code>flag=MS_SYNC</code>等同于对<code>mmap</code>对应的文件调用<code>fsync</code>；<code>flag=MS_ASYNC/MS_INVALIDATE</code>其实什么都不执行。</p>
-<img src="/source/images/2015/disk_42.png">
+<img src="/images/2015/disk_42.png">
 
-<h3 id="madvise"><a href="#madvise" class="headerlink" title="madvise"></a>madvise</h3><img src="/source/images/2015/disk_43.png">
+<h3 id="madvise"><a href="#madvise" class="headerlink" title="madvise"></a>madvise</h3><img src="/images/2015/disk_43.png">
 
-<h3 id="fadvise-1"><a href="#fadvise-1" class="headerlink" title="fadvise"></a>fadvise</h3><img src="/source/images/2015/disk_44.png">
+<h3 id="fadvise-1"><a href="#fadvise-1" class="headerlink" title="fadvise"></a>fadvise</h3><img src="/images/2015/disk_44.png">
 
 <h2 id="编程实践"><a href="#编程实践" class="headerlink" title="编程实践"></a>编程实践</h2><h3 id="File-IO"><a href="#File-IO" class="headerlink" title="File IO"></a>File IO</h3><p><code>java.io</code> 包下的 <code>FileReader</code>、 <code>FileWriter</code> 之类 API ，性能太差基本不考虑使用。</p>
 <h3 id="FileChannel"><a href="#FileChannel" class="headerlink" title="FileChannel"></a>FileChannel</h3><p>FileChannel 采用了 ByteBuffer 内存缓冲区，让我们可以非常精准的控制写盘的大小，这是普通 IO 无法实现的。我们在写入时注意控制 ByteBuffer 的大小，FileChannel 只有在一次写入 4kb 的整数倍时，才能发挥出实际的性能，主要取决你机器的磁盘结构，并且受到操作系统，文件系统，CPU 的影响，需要对使用的机器进行测试获取到最佳写入大小。</p>
-<img src="/source/images/2015/disk_45.png">
+<img src="/images/2015/disk_45.png">
 
 <p>FIleChannel <code>write</code> 和 <code>read</code> 方法均是<strong>线程安全</strong>的，FileChannel 内部通过一把 <code>private final Object positionLock = new Object();</code> 锁来控制并发。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>FileInputStream<span class="token punctuation">;</span>
