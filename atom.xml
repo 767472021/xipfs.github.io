@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xipfs.github.io/"/>
-  <updated>2020-05-20T05:46:02.715Z</updated>
+  <updated>2020-05-20T10:15:03.913Z</updated>
   <id>http://xipfs.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>io</title>
+    <title>深入理解 Libra</title>
+    <link href="http://xipfs.github.io/2020/05/20/libra/"/>
+    <id>http://xipfs.github.io/2020/05/20/libra/</id>
+    <published>2020-05-20T10:12:19.000Z</published>
+    <updated>2020-05-20T10:15:03.913Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;1-共识&quot;&gt;&lt;a href=&quot;#1-共识&quot; class=&quot;headerlink&quot; title=&quot;1. 共识&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Blockchain" scheme="http://xipfs.github.io/categories/Blockchain/"/>
+    
+    
+      <category term="Blockchain" scheme="http://xipfs.github.io/tags/Blockchain/"/>
+    
+      <category term="Libra" scheme="http://xipfs.github.io/tags/Libra/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IO</title>
     <link href="http://xipfs.github.io/2020/05/20/io/"/>
     <id>http://xipfs.github.io/2020/05/20/io/</id>
     <published>2020-05-20T03:14:08.000Z</published>
-    <updated>2020-05-20T05:46:02.715Z</updated>
+    <updated>2020-05-20T08:02:47.513Z</updated>
     
     <summary type="html">
     
