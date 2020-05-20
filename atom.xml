@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xipfs.github.io/"/>
-  <updated>2020-05-19T10:35:57.586Z</updated>
+  <updated>2020-05-20T03:21:46.939Z</updated>
   <id>http://xipfs.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>io</title>
+    <link href="http://xipfs.github.io/2020/05/20/io/"/>
+    <id>http://xipfs.github.io/2020/05/20/io/</id>
+    <published>2020-05-20T03:14:08.000Z</published>
+    <updated>2020-05-20T03:21:46.939Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;文件 I/O 的性能对数据库系统的性能有直接的影响，我们需要全面了解和掌握文件I/O。&lt;/p&gt;
+&lt;h2 id=&quot;整体架构&quot;&gt;&lt;a href=&quot;#整体架构&quot; class=&quot;headerlink&quot; title=&quot;整体架构&quot;&gt;&lt;/a&gt;整体架构&lt;/h2&gt;&lt;p&gt;Linux
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://xipfs.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://xipfs.github.io/tags/Linux/"/>
+    
+      <category term="IO" scheme="http://xipfs.github.io/tags/IO/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
