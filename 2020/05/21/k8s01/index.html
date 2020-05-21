@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Schrödinger&#39;s Code">
+    <meta name="keywords" content="深入理解 Kubernetes 概述, Schrödinger&#39;s Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Schrödinger&#39;s Code</title>
+    <title>深入理解 Kubernetes 概述 | Schrödinger&#39;s Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">深入理解 Kubernetes 概述</h1>
                 </div>
             </div>
         </div>
@@ -429,12 +429,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kubernetes/">
+                                <span class="chip bg-color">Kubernetes</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                Kubernetes
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -443,28 +456,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-19
+                    2020-05-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-19
+                    2020-05-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    125
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -479,15 +492,59 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="Kubernetes-架构设计"><a href="#Kubernetes-架构设计" class="headerlink" title="Kubernetes 架构设计"></a>Kubernetes 架构设计</h1><p><img src="/images/2020/Kubernetes-architecture.png" alt=""></p>
+<h2 id="Kubernetes-流程"><a href="#Kubernetes-流程" class="headerlink" title="Kubernetes 流程"></a>Kubernetes 流程</h2><p><img src="/images/2020/what-happens-when-k8s.png" alt=""></p>
+<h2 id="Kubernetes-核心组件"><a href="#Kubernetes-核心组件" class="headerlink" title="Kubernetes 核心组件"></a>Kubernetes 核心组件</h2><h3 id="Kubectl"><a href="#Kubectl" class="headerlink" title="Kubectl"></a>Kubectl</h3><p>kubectl 是用户与 Kubernetes 交互的命令行工具。用户使用 kubectl 工具调用 Apiserver 的接口来与 Kubernetes服务进行交互。</p>
+<p>更多 kubectl 信息请参考：<a href="k8s2.md">深入理解 Kubernetes 之 Kubectl</a></p>
+<h3 id="Kube-API-server"><a href="#Kube-API-server" class="headerlink" title="Kube API server"></a>Kube API server</h3><p>Kubernetes API server 为 api 对象验证并配置数据，包括 pods、 services、 replicationcontrollers 和其它 api 对象。API Server 提供 REST 操作和到集群共享状态的前端，所有其他组件通过它进行交互，是整个系统的数据总线和数据中心。</p>
+<p>Kubernetes 中的其它组件都不会和 etcd 进行交互，只有 API Server 可以和 etcd 进行交互,API Server  具有如下功能：</p>
+<ul>
+<li>整个集群管理的 API 接口：所有对集群进行的查询和管理都是通过 API 进行</li>
+<li>集群内部各个模块之间通信的枢纽：所有模块之间并不会互相调用，而是通过和 API Serve r打交道完成这部分的工作</li>
+<li>集群的安全控制: API Server 提供的验证和授权和访问控制保证了整个集群的安全</li>
+</ul>
+<p>更多 Kube API server 信息请参考：<a href="k8s3.md">深入理解 Kubernetes 之 Kube API server</a></p>
+<h3 id="Controller-manager"><a href="#Controller-manager" class="headerlink" title="Controller manager"></a>Controller manager</h3><p>Controller Manager 就是集群内部的管理控制中心，由负责不同资源的多个 Controller 构成，共同负责集群内的 Node、Pod 等所有资源的管理，比如当通过 Deployment 创建的某个 Pod 发生异常退出时，RS Controller 便会接受并处理该退出事件，并创建新的 Pod 来维持预期副本数。</p>
+<p>几乎每种特定资源都有特定的 Controller 维护管理以保持预期状态，而 Controller Manager 的职责便是把所有的 Controller 聚合起来：</p>
+<ol>
+<li>提供基础设施降低 Controller 的实现复杂度</li>
+<li>启动和维持 Controller 的正常运行</li>
+</ol>
+<p>可以这么说，Controller 保证集群内的资源保持预期状态，而 Controller Manager 保证了 Controller 保持在预期状态。</p>
+<p>更多 Controller manager 信息请参考：<a href="k8s4.md">深入理解 Kubernetes 之 Controller manager</a></p>
+<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>调度是 Kubernetes 集群中进行容器编排工作最重要的一环，在 Kubernetes中，Controller manager 负责创建Pod，Kubelet 负责执行 Pod，而 Scheduler 就是负责安排 Pod 到具体的 Node，它通过 API Server 提供的接口监听 Pod 任务列表，获取待调度 pod，然后根据一系列的预选策略和优选策略给各个 Node 节点打分，然后将Pod 发送到得分最高的 Node 节点上，由 kubelet 负责执行具体的任务内容。</p>
+<p>更多 Scheduler  信息请参考：<a href="k8s5.md">深入理解 Kubernetes 之 Scheduler </a></p>
+<h3 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h3><p>每个Node都会启动一个kubelet，主要作用有：</p>
+<ul>
+<li><p>Node管理</p>
+<ul>
+<li><p>注册节点信息；</p>
+</li>
+<li><p>通过 cAdvisor 监控容器和节点的资源；</p>
+</li>
+<li><p>定期向 API server 汇报本节点资源消耗情况</p>
+</li>
+</ul>
+</li>
+<li><p>Pod管理</p>
+<ul>
+<li>所有非通过 API server 方式创建的 Pod 叫 Static Pod，这里我们讨论的都是通过 API server 创建的普通Pod。kubelet 通过 API server 监听 etcd，所有针对 Pod 的操作都会被监听到，如果其中有涉及到本节点的 Pod，则按照要求进行创建、修改、删除等操作。</li>
+</ul>
+</li>
+<li><p>容器健康检查</p>
+<p>kubelet通过两类探针检查容器的状态：</p>
+<ul>
+<li><p>LivenessProbe：判断一个容器是否健康，如果不健康则会删除这个容器，并按照 restartPolicy 看是否重启这个容器。实现的方式有 ExecAction（在容器内部执行一个命令）、TCPSocketAction（如果端口可以被访问，则健康）、HttpGetAction（如果返回200则健康）。</p>
+</li>
+<li><p>ReadinessProbe：用于判断容器是否启动完全。如果返回的是失败，则 Endpoint Controller 会将这个Pod 的 Endpoint从Service 的 Endpoint 列表中删除。也就是，不会有请求转发给它。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>更多 Kubelet信息请参考：<a href="k8s6.md">深入理解 Kubernetes 之 Kubelet</a></p>
+<h3 id="Kube-proxy"><a href="#Kube-proxy" class="headerlink" title="Kube proxy"></a>Kube proxy</h3><p>每个 Node 上都运行着一个 kube-proxy 进程，它在本地建立一个 SocketServer 接收和转发请求，可以看作是Service 的透明代理和负载均衡器，负载均衡策略模式是 Round Robin。也可以设置会话保持，策略使用的是 ClientIP，将同一个 ClientIP 的请求转发同一个 Endpoint 上。</p>
+<p>Service 的 Cluster IP 和 NodePort 等概念都是 kube-proxy 服务通过 iptables 的 NAT 转换实现，iptables 机制针对的是 kube-proxy 监听的端口，所以每个 Node 上都要有 kube-proxy。</p>
+<p>更多 Kube proxy 信息请参考：<a href="k8s7.md">深入理解 Kubernetes 之 Kube proxy</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -521,7 +578,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Xie hui</a>
+                    <a href="/about" rel="external nofollow noreferrer">xiehui</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -531,7 +588,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xipfs.github.io/2020/05/19/hello-world/">http://xipfs.github.io/2020/05/19/hello-world/</a>
+                    <a href="http://xipfs.github.io/2020/05/21/k8s01/">http://xipfs.github.io/2020/05/21/k8s01/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,7 +601,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Xie hui</a>
+                    <a href="/about" target="_blank">xiehui</a>
                     !
                 </span>
             </div>
@@ -568,7 +625,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Kubernetes/">
+                                    <span class="chip bg-color">Kubernetes</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -734,56 +795,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/05/20/io/">
+                <a href="/2020/05/21/k8s01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="IO">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深入理解 Kubernetes 概述">
                         
-                        <span class="card-title">IO</span>
+                        <span class="card-title">深入理解 Kubernetes 概述</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            文件 I/O 的性能对数据库系统的性能有直接的影响，我们需要全面了解和掌握文件I/O。
-整体架构Linux 文件系统采用分层设计，对不同层进行抽象达到架构清晰、解耦的作用。
-Linux Storage Stack
-
-硬盘
-
-HDD 和早期 
+                            Kubernetes 架构设计
+Kubernetes 流程
+Kubernetes 核心组件Kubectlkubectl 是用户与 Kubernetes 交互的命令行工具。用户使用 kubectl 工具调用 Apiserver 的接口来与 K
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/IO/">
-                        <span class="chip bg-color">IO</span>
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
                     </a>
                     
                 </div>
@@ -794,37 +849,60 @@ HDD 和早期
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/19/hello-world/">
+                <a href="/2020/05/20/libra/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="深入理解 Libra">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">深入理解 Libra</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            1. 共识区块链技术中，共识算法是其中核心的一个组成部分。它包含两层含义：
+
+多个节点对某个数据达成一致共识。
+多个节点对多个数据的顺序达成一致共识。
+
+共识算法主要用在以下三种场景：
+
+私链
+私链的共识算法即传统分布式系统里的共识算法，比
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-20
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Xie hui
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Blockchain/" class="post-category">
+                                    Blockchain
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Blockchain/">
+                        <span class="chip bg-color">Blockchain</span>
+                    </a>
+                    
+                    <a href="/tags/Libra/">
+                        <span class="chip bg-color">Libra</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

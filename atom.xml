@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xipfs.github.io/"/>
-  <updated>2020-05-20T10:15:03.913Z</updated>
+  <updated>2020-05-21T06:49:39.205Z</updated>
   <id>http://xipfs.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入理解 Kubernetes 概述</title>
+    <link href="http://xipfs.github.io/2020/05/21/k8s01/"/>
+    <id>http://xipfs.github.io/2020/05/21/k8s01/</id>
+    <published>2020-05-21T03:11:54.000Z</published>
+    <updated>2020-05-21T06:49:39.205Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Kubernetes-架构设计&quot;&gt;&lt;a href=&quot;#Kubernetes-架构设计&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes 架构设计&quot;&gt;&lt;/a&gt;Kubernetes 架构设计&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Kubernetes" scheme="http://xipfs.github.io/categories/Kubernetes/"/>
+    
+    
+      <category term="Kubernetes" scheme="http://xipfs.github.io/tags/Kubernetes/"/>
+    
+  </entry>
   
   <entry>
     <title>深入理解 Libra</title>
