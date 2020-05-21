@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深入理解 Kubernetes 概述, TYPEOF">
+    <meta name="keywords" content="深入理解 Kubernetes 之 Kubectl, TYPEOF">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深入理解 Kubernetes 概述 | TYPEOF</title>
+    <title>深入理解 Kubernetes 之 Kubectl | TYPEOF</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深入理解 Kubernetes 概述</h1>
+                    <h1 class="description center-align post-title">深入理解 Kubernetes 之 Kubectl</h1>
                 </div>
             </div>
         </div>
@@ -477,7 +477,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -492,59 +492,181 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Kubernetes-架构设计"><a href="#Kubernetes-架构设计" class="headerlink" title="Kubernetes 架构设计"></a>Kubernetes 架构设计</h1><p><img src="/images/2020/Kubernetes-architecture.png" alt=""></p>
-<h2 id="Kubernetes-流程"><a href="#Kubernetes-流程" class="headerlink" title="Kubernetes 流程"></a>Kubernetes 流程</h2><p><img src="/images/2020/what-happens-when-k8s.png" alt=""></p>
-<h2 id="Kubernetes-核心组件"><a href="#Kubernetes-核心组件" class="headerlink" title="Kubernetes 核心组件"></a>Kubernetes 核心组件</h2><h3 id="Kubectl"><a href="#Kubectl" class="headerlink" title="Kubectl"></a>Kubectl</h3><p>kubectl 是用户与 Kubernetes 交互的命令行工具。用户使用 kubectl 工具调用 Apiserver 的接口来与 Kubernetes服务进行交互。</p>
-<p>更多 kubectl 信息请参考：<a href="k8s2.md">深入理解 Kubernetes 之 Kubectl</a></p>
-<h3 id="Kube-API-server"><a href="#Kube-API-server" class="headerlink" title="Kube API server"></a>Kube API server</h3><p>Kubernetes API server 为 api 对象验证并配置数据，包括 pods、 services、 replicationcontrollers 和其它 api 对象。API Server 提供 REST 操作和到集群共享状态的前端，所有其他组件通过它进行交互，是整个系统的数据总线和数据中心。</p>
-<p>Kubernetes 中的其它组件都不会和 etcd 进行交互，只有 API Server 可以和 etcd 进行交互,API Server  具有如下功能：</p>
-<ul>
-<li>整个集群管理的 API 接口：所有对集群进行的查询和管理都是通过 API 进行</li>
-<li>集群内部各个模块之间通信的枢纽：所有模块之间并不会互相调用，而是通过和 API Serve r打交道完成这部分的工作</li>
-<li>集群的安全控制: API Server 提供的验证和授权和访问控制保证了整个集群的安全</li>
-</ul>
-<p>更多 Kube API server 信息请参考：<a href="k8s3.md">深入理解 Kubernetes 之 Kube API server</a></p>
-<h3 id="Controller-manager"><a href="#Controller-manager" class="headerlink" title="Controller manager"></a>Controller manager</h3><p>Controller Manager 就是集群内部的管理控制中心，由负责不同资源的多个 Controller 构成，共同负责集群内的 Node、Pod 等所有资源的管理，比如当通过 Deployment 创建的某个 Pod 发生异常退出时，RS Controller 便会接受并处理该退出事件，并创建新的 Pod 来维持预期副本数。</p>
-<p>几乎每种特定资源都有特定的 Controller 维护管理以保持预期状态，而 Controller Manager 的职责便是把所有的 Controller 聚合起来：</p>
+                <h1 id="深入理解-Kubectl"><a href="#深入理解-Kubectl" class="headerlink" title="深入理解 Kubectl"></a>深入理解 Kubectl</h1><p>kubectl 是 Kubernetes 集群的命令行工具，通过 kubectl 能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署。运行 kubectl 命令的语法如下所示：</p>
+<pre class=" language-bash"><code class="language-bash">kubectl <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>NAME<span class="token punctuation">]</span> <span class="token punctuation">[</span>flags<span class="token punctuation">]</span></code></pre>
+<p><strong>comand</strong>：指定要对资源执行的操作，例如 create、get、describe 和 delete。</p>
+<p><strong>TYPE</strong>：指定资源类型，资源类型是大小学敏感的，开发者能够以单数、复数和缩略的形式。</p>
+<p><strong>NAME</strong>：指定资源的名称，名称也大小写敏感的。如果省略名称，则会显示所有的资源。</p>
+<p><strong>flags</strong>：指定可选的参数。</p>
+<p>例如：</p>
+<pre class=" language-bash"><code class="language-bash">kubectl create -f nginx-deployment.yaml</code></pre>
+<h2 id="Kubectl-流程"><a href="#Kubectl-流程" class="headerlink" title="Kubectl 流程"></a>Kubectl 流程</h2><p><img src="../images/2020/kubectl.png" alt=""></p>
+<p>Kubectl 的执行流程：</p>
 <ol>
-<li>提供基础设施降低 Controller 的实现复杂度</li>
-<li>启动和维持 Controller 的正常运行</li>
+<li><p>用户发起请求</p>
+</li>
+<li><p>根据用户执行动作分发给处理对应动作的 Cmd</p>
+</li>
+<li><p>解析用户命令</p>
+</li>
+<li><p>向Apiserver获取数据</p>
+</li>
+<li><p>解析返回为通用的数据集合</p>
+</li>
 </ol>
-<p>可以这么说，Controller 保证集群内的资源保持预期状态，而 Controller Manager 保证了 Controller 保持在预期状态。</p>
-<p>更多 Controller manager 信息请参考：<a href="k8s4.md">深入理解 Kubernetes 之 Controller manager</a></p>
-<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>调度是 Kubernetes 集群中进行容器编排工作最重要的一环，在 Kubernetes中，Controller manager 负责创建Pod，Kubelet 负责执行 Pod，而 Scheduler 就是负责安排 Pod 到具体的 Node，它通过 API Server 提供的接口监听 Pod 任务列表，获取待调度 pod，然后根据一系列的预选策略和优选策略给各个 Node 节点打分，然后将Pod 发送到得分最高的 Node 节点上，由 kubelet 负责执行具体的任务内容。</p>
-<p>更多 Scheduler  信息请参考：<a href="k8s5.md">深入理解 Kubernetes 之 Scheduler </a></p>
-<h3 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h3><p>每个Node都会启动一个kubelet，主要作用有：</p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>执行以下代码：</p>
+<pre class=" language-bash"><code class="language-bash">kubectl create -f nginx-deployment.yaml</code></pre>
+<h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p>代码路径：</p>
+<p><a href="https://github.com/kubernetes/kubernetes/blob/9e991415386e4cf155a24b1da15becaa390438d8/cmd/kubectl/kubectl.go#L35" target="_blank" rel="noopener"><code>kubernetes/cmd/kubectl/kubectl.go</code></a></p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token operator">...</span>
+    <span class="token comment" spellcheck="true">// 准备command</span>
+    command <span class="token operator">:=</span> cmd<span class="token punctuation">.</span><span class="token function">NewDefaultKubectlCommand</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// 执行命令</span>
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> command<span class="token punctuation">.</span><span class="token function">Execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        os<span class="token punctuation">.</span><span class="token function">Exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="命令匹配"><a href="#命令匹配" class="headerlink" title="命令匹配"></a>命令匹配</h3><p>代码路径：</p>
+<p><a href="https://github.com/kubernetes/kubernetes/blob/9e991415386e4cf155a24b1da15becaa390438d8/pkg/kubectl/cmd/cmd.go#L482" target="_blank" rel="noopener">kubernetes/pkg/kubectl/cmd/cmd.go</a></p>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 对用户输入的命令进行匹配</span>
+groups <span class="token operator">:=</span> templates<span class="token punctuation">.</span>CommandGroups<span class="token punctuation">{</span>
+        <span class="token punctuation">{</span>
+            Message<span class="token punctuation">:</span> <span class="token string">"Basic Commands (Beginner):"</span><span class="token punctuation">,</span>
+            Commands<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">{</span>
+                create<span class="token punctuation">.</span><span class="token function">NewCmdCreate</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> ioStreams<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                expose<span class="token punctuation">.</span><span class="token function">NewCmdExposeService</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> ioStreams<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                run<span class="token punctuation">.</span><span class="token function">NewCmdRun</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> ioStreams<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                set<span class="token punctuation">.</span><span class="token function">NewCmdSet</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> ioStreams<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+        <span class="token operator">...</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="处理用户命令"><a href="#处理用户命令" class="headerlink" title="处理用户命令"></a>处理用户命令</h3><p>代码路径：</p>
+<p><a href="https://github.com/kubernetes/kubernetes/blob/9e991415386e4cf155a24b1da15becaa390438d8/staging/src/k8s.io/kubectl/pkg/cmd/create/create.go#L116" target="_blank" rel="noopener">kubernetes/staging/src/k8s.io/kubectl/pkg/cmd/create/create.go</a></p>
+<p>匹配上 <code>create</code> 命令调用 <code>o.RunCreate(f,cmd)</code> 函数执行</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">NewCmdCreate</span><span class="token punctuation">(</span>f cmdutil<span class="token punctuation">.</span>Factory<span class="token punctuation">,</span> ioStreams genericclioptions<span class="token punctuation">.</span>IOStreams<span class="token punctuation">)</span> <span class="token operator">*</span>cobra<span class="token punctuation">.</span>Command <span class="token punctuation">{</span>
+    o <span class="token operator">:=</span> <span class="token function">NewCreateOptions</span><span class="token punctuation">(</span>ioStreams<span class="token punctuation">)</span>
+    cmd <span class="token operator">:=</span> <span class="token operator">&amp;</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">{</span>
+        Use<span class="token punctuation">:</span>                   <span class="token string">"create -f FILENAME"</span><span class="token punctuation">,</span>
+        DisableFlagsInUseLine<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        Short<span class="token punctuation">:</span>                 i18n<span class="token punctuation">.</span><span class="token function">T</span><span class="token punctuation">(</span><span class="token string">"Create a resource from a file or from stdin."</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        Long<span class="token punctuation">:</span>                  createLong<span class="token punctuation">,</span>
+        Example<span class="token punctuation">:</span>               createExample<span class="token punctuation">,</span>
+        Run<span class="token punctuation">:</span> <span class="token keyword">func</span><span class="token punctuation">(</span>cmd <span class="token operator">*</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">,</span> args <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 合法性检查</span>
+            cmdutil<span class="token punctuation">.</span><span class="token function">CheckErr</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span><span class="token function">Complete</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> cmd<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            cmdutil<span class="token punctuation">.</span><span class="token function">CheckErr</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span><span class="token function">ValidateArgs</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true">// 执行命令</span>
+            cmdutil<span class="token punctuation">.</span><span class="token function">CheckErr</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span><span class="token function">RunCreate</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> cmd<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 创建子命令</span>
+    cmd<span class="token punctuation">.</span><span class="token function">AddCommand</span><span class="token punctuation">(</span><span class="token function">NewCmdCreateNamespace</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> ioStreams<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">...</span>
+    <span class="token keyword">return</span> cmd
+<span class="token punctuation">}</span></code></pre>
+<p>在 RunCreate 中时对该命令的具体处理，通过链式反应</p>
+<p><code>f.NewBuilder().Unstructured().Schema(schema).ContinueOnError().NamespaceParam(cmdNamespace).DefaultNamespace().FilenameParam().LabelSelectorParam().Flatten().Do()</code></p>
+<p>为执行命令做好数据准备。这段代码所做的事情是将命令行接收到的参数转化为一个资源的列。它也负责创建一个可以用来迭代访问所有资源的 Visitor 结构。这个命令比较复杂，因为它使用了Builder模式的变种，使用独立的函数做各自的数据初始化工作。</p>
+<p>一旦所有的初始化都完成，resource.NewBuilder 函数会调用 Do 函数。<code>Do()</code> 函数是注册具体向 Apiserver 请求数据，和将返回数据转化为通用结构的函数。它会返回一个Result对象，并且将执行对资源的创建。Do 函数还会创建一个Visitor对象，可以用来遍历所有关联到 resource.NewBuilder 执行过程的资源。</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>o <span class="token operator">*</span>CreateOptions<span class="token punctuation">)</span> <span class="token function">RunCreate</span><span class="token punctuation">(</span>f cmdutil<span class="token punctuation">.</span>Factory<span class="token punctuation">,</span> cmd <span class="token operator">*</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+<span class="token operator">...</span>
+    r <span class="token operator">:=</span> f<span class="token punctuation">.</span><span class="token function">NewBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>  <span class="token comment" spellcheck="true">// Builder 设计模式</span>
+        <span class="token function">Unstructured</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>   <span class="token comment" spellcheck="true">// 支持非结构化数据</span>
+        <span class="token function">Schema</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">ContinueOnError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">NamespaceParam</span><span class="token punctuation">(</span>cmdNamespace<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DefaultNamespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">FilenameParam</span><span class="token punctuation">(</span>enforceNamespace<span class="token punctuation">,</span> <span class="token operator">&amp;</span>o<span class="token punctuation">.</span>FilenameOptions<span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">LabelSelectorParam</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>Selector<span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">// 设置用户的标签选择</span>
+        <span class="token function">Flatten</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>  <span class="token comment" spellcheck="true">// 决定以何种方式从 Kubernetes 的返回数据中提取数据</span>
+        <span class="token function">Do</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 执行命令获取数据</span>
+
+    <span class="token comment" spellcheck="true">// 创建 Visitor 对象，可以用来遍历所有关联到 Builder 执行过程的资源</span>
+    err <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token function">Visit</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>info <span class="token operator">*</span>resource<span class="token punctuation">.</span>Info<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+<span class="token operator">...</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">.</span><span class="token function">PrintObj</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>Object<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印对象</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">...</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="发送请求并获取数据"><a href="#发送请求并获取数据" class="headerlink" title="发送请求并获取数据"></a>发送请求并获取数据</h3><p>代码路径：</p>
+<p><a href="https://github.com/kubernetes/kubernetes/blob/v1.18.0/staging/src/k8s.io/cli-runtime/pkg/resource/builder.go#L1098" target="_blank" rel="noopener">kubernetes/staging/src/k8s.io/cli-runtime/pkg/resource/builder.go </a></p>
+<p>重要函数：</p>
 <ul>
-<li><p>Node管理</p>
-<ul>
-<li><p>注册节点信息；</p>
-</li>
-<li><p>通过 cAdvisor 监控容器和节点的资源；</p>
-</li>
-<li><p>定期向 API server 汇报本节点资源消耗情况</p>
-</li>
+<li><code>RetrieveLazy</code> 中注册了从 Apiserver 获取数据的操作。</li>
+<li><code>NewDecoratedVisitor</code> 中注册了从获取到的数据结构中转化出通用数据的方法。</li>
 </ul>
-</li>
-<li><p>Pod管理</p>
-<ul>
-<li>所有非通过 API server 方式创建的 Pod 叫 Static Pod，这里我们讨论的都是通过 API server 创建的普通Pod。kubelet 通过 API server 监听 etcd，所有针对 Pod 的操作都会被监听到，如果其中有涉及到本节点的 Pod，则按照要求进行创建、修改、删除等操作。</li>
-</ul>
-</li>
-<li><p>容器健康检查</p>
-<p>kubelet通过两类探针检查容器的状态：</p>
-<ul>
-<li><p>LivenessProbe：判断一个容器是否健康，如果不健康则会删除这个容器，并按照 restartPolicy 看是否重启这个容器。实现的方式有 ExecAction（在容器内部执行一个命令）、TCPSocketAction（如果端口可以被访问，则健康）、HttpGetAction（如果返回200则健康）。</p>
-</li>
-<li><p>ReadinessProbe：用于判断容器是否启动完全。如果返回的是失败，则 Endpoint Controller 会将这个Pod 的 Endpoint从Service 的 Endpoint 列表中删除。也就是，不会有请求转发给它。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>更多 Kubelet信息请参考：<a href="k8s6.md">深入理解 Kubernetes 之 Kubelet</a></p>
-<h3 id="Kube-proxy"><a href="#Kube-proxy" class="headerlink" title="Kube proxy"></a>Kube proxy</h3><p>每个 Node 上都运行着一个 kube-proxy 进程，它在本地建立一个 SocketServer 接收和转发请求，可以看作是Service 的透明代理和负载均衡器，负载均衡策略模式是 Round Robin。也可以设置会话保持，策略使用的是 ClientIP，将同一个 ClientIP 的请求转发同一个 Endpoint 上。</p>
-<p>Service 的 Cluster IP 和 NodePort 等概念都是 kube-proxy 服务通过 iptables 的 NAT 转换实现，iptables 机制针对的是 kube-proxy 监听的端口，所以每个 Node 上都要有 kube-proxy。</p>
-<p>更多 Kube proxy 信息请参考：<a href="k8s7.md">深入理解 Kubernetes 之 Kube proxy</a></p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>b <span class="token operator">*</span>Builder<span class="token punctuation">)</span> <span class="token function">Do</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>Result <span class="token punctuation">{</span>
+    r <span class="token operator">:=</span> b<span class="token punctuation">.</span><span class="token function">visitorResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    r<span class="token punctuation">.</span>mapper <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">Mapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> r<span class="token punctuation">.</span>err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> r
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> b<span class="token punctuation">.</span>flatten <span class="token punctuation">{</span>
+        r<span class="token punctuation">.</span>visitor <span class="token operator">=</span> <span class="token function">NewFlattenListVisitor</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>visitor<span class="token punctuation">,</span> b<span class="token punctuation">.</span>objectTyper<span class="token punctuation">,</span> b<span class="token punctuation">.</span>mapper<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 注册获取数据前的动作</span>
+    helpers <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>VisitorFunc<span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">if</span> b<span class="token punctuation">.</span>defaultNamespace <span class="token punctuation">{</span>
+        helpers <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>helpers<span class="token punctuation">,</span> <span class="token function">SetNamespace</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>namespace<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> b<span class="token punctuation">.</span>requireNamespace <span class="token punctuation">{</span>
+        helpers <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>helpers<span class="token punctuation">,</span> <span class="token function">RequireNamespace</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>namespace<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    helpers <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>helpers<span class="token punctuation">,</span> FilterNamespace<span class="token punctuation">)</span>
+     <span class="token comment" spellcheck="true">// 注册从 Apiserver 获取数据的方法</span>
+    <span class="token keyword">if</span> b<span class="token punctuation">.</span>requireObject <span class="token punctuation">{</span>
+        helpers <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>helpers<span class="token punctuation">,</span> RetrieveLazy<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 注册从返回数据中提取信息的方法</span>
+    <span class="token keyword">if</span> b<span class="token punctuation">.</span>continueOnError <span class="token punctuation">{</span>
+        r<span class="token punctuation">.</span>visitor <span class="token operator">=</span> <span class="token function">NewDecoratedVisitor</span><span class="token punctuation">(</span>ContinueOnErrorVisitor<span class="token punctuation">{</span>r<span class="token punctuation">.</span>visitor<span class="token punctuation">}</span><span class="token punctuation">,</span> helpers<span class="token operator">...</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        r<span class="token punctuation">.</span>visitor <span class="token operator">=</span> <span class="token function">NewDecoratedVisitor</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>visitor<span class="token punctuation">,</span> helpers<span class="token operator">...</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> r
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// RetrieveLazy updates the object if it has not been loaded yet.</span>
+<span class="token keyword">func</span> <span class="token function">RetrieveLazy</span><span class="token punctuation">(</span>info <span class="token operator">*</span>Info<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> info<span class="token punctuation">.</span>Object <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> info<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 从 API server 获取数据</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>而 NewDecoratedVisitor 函数注册了数据处理的关键函数 Visit， 这个函数可以使用户可以将来自 API server 的数据转化为通用数据集合。</p>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// Visit implements Visitor</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>v DecoratedVisitor<span class="token punctuation">)</span> <span class="token function">Visit</span><span class="token punctuation">(</span>fn VisitorFunc<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> v<span class="token punctuation">.</span>visitor<span class="token punctuation">.</span><span class="token function">Visit</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>info <span class="token operator">*</span>Info<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> err
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token keyword">range</span> v<span class="token punctuation">.</span>decorators <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> err <span class="token operator">:=</span> v<span class="token punctuation">.</span>decorators<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> err
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="打印返回数据"><a href="#打印返回数据" class="headerlink" title="打印返回数据"></a>打印返回数据</h3><pre class=" language-go"><code class="language-go">err <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token function">Visit</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>info <span class="token operator">*</span>resource<span class="token punctuation">.</span>Info<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> o<span class="token punctuation">.</span>DryRunStrategy <span class="token operator">!=</span> cmdutil<span class="token punctuation">.</span>DryRunClient <span class="token punctuation">{</span>
+            obj<span class="token punctuation">,</span> err <span class="token operator">:=</span> resource<span class="token punctuation">.</span>
+                <span class="token function">NewHelper</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>Client<span class="token punctuation">,</span> info<span class="token punctuation">.</span>Mapping<span class="token punctuation">)</span><span class="token punctuation">.</span>
+                <span class="token function">DryRun</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>DryRunStrategy <span class="token operator">==</span> cmdutil<span class="token punctuation">.</span>DryRunServer<span class="token punctuation">)</span><span class="token punctuation">.</span>
+                <span class="token function">Create</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>Namespace<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> info<span class="token punctuation">.</span>Object<span class="token punctuation">)</span>
+            info<span class="token punctuation">.</span><span class="token function">Refresh</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+<span class="token operator">...</span>
+        <span class="token comment" spellcheck="true">// 打印数据 </span>
+        <span class="token keyword">return</span> o<span class="token punctuation">.</span><span class="token function">PrintObj</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>Object<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>到此 Kubectl 的流程分析完毕。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -588,7 +710,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xipfs.github.io/2020/05/21/k8s01/">http://xipfs.github.io/2020/05/21/k8s01/</a>
+                    <a href="http://xipfs.github.io/2020/05/21/k8s02/">http://xipfs.github.io/2020/05/21/k8s02/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -795,9 +917,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/05/21/k8s02/">
                     <div class="card-image">
@@ -816,9 +939,9 @@ kubectl [comm
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -831,6 +954,7 @@ kubectl [comm
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -849,39 +973,33 @@ kubectl [comm
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/20/libra/">
+                <a href="/2020/05/21/k8s01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="深入理解 Libra">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深入理解 Kubernetes 概述">
                         
-                        <span class="card-title">深入理解 Libra</span>
+                        <span class="card-title">深入理解 Kubernetes 概述</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 共识区块链技术中，共识算法是其中核心的一个组成部分。它包含两层含义：
-
-多个节点对某个数据达成一致共识。
-多个节点对多个数据的顺序达成一致共识。
-
-共识算法主要用在以下三种场景：
-
-私链
-私链的共识算法即传统分布式系统里的共识算法，比
+                            Kubernetes 架构设计
+Kubernetes 流程
+Kubernetes 核心组件Kubectlkubectl 是用户与 Kubernetes 交互的命令行工具。用户使用 kubectl 工具调用 Apiserver 的接口来与 K
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Blockchain/" class="post-category">
-                                    Blockchain
+                            <a href="/categories/Kubernetes/" class="post-category">
+                                    Kubernetes
                                 </a>
                             
                             
@@ -891,12 +1009,8 @@ kubectl [comm
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Blockchain/">
-                        <span class="chip bg-color">Blockchain</span>
-                    </a>
-                    
-                    <a href="/tags/Libra/">
-                        <span class="chip bg-color">Libra</span>
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
                     </a>
                     
                 </div>
