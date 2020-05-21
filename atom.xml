@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Schrödinger&#39;s Code</title>
+  <title>TYPEOF</title>
   
   <subtitle>TYPEOF</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -48,7 +48,7 @@
     <link href="http://xipfs.github.io/2020/05/20/libra/"/>
     <id>http://xipfs.github.io/2020/05/20/libra/</id>
     <published>2020-05-20T10:12:19.000Z</published>
-    <updated>2020-05-20T10:15:03.913Z</updated>
+    <updated>2020-05-21T06:52:35.378Z</updated>
     
     <summary type="html">
     
@@ -77,7 +77,7 @@
     <link href="http://xipfs.github.io/2020/05/20/io/"/>
     <id>http://xipfs.github.io/2020/05/20/io/</id>
     <published>2020-05-20T03:14:08.000Z</published>
-    <updated>2020-05-20T08:02:47.513Z</updated>
+    <updated>2020-05-21T06:52:13.792Z</updated>
     
     <summary type="html">
     
