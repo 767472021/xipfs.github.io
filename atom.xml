@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xipfs.github.io/"/>
-  <updated>2020-05-27T07:06:15.672Z</updated>
+  <updated>2020-05-27T07:26:53.662Z</updated>
   <id>http://xipfs.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>k8s03</title>
+    <title>深入理解 Kubernetes 之 API server</title>
     <link href="http://xipfs.github.io/2020/05/27/k8s03/"/>
     <id>http://xipfs.github.io/2020/05/27/k8s03/</id>
     <published>2020-05-27T07:04:05.000Z</published>
-    <updated>2020-05-27T07:06:15.672Z</updated>
+    <updated>2020-05-27T07:26:53.662Z</updated>
     
     <summary type="html">
     

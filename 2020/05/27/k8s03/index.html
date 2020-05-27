@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="k8s03, TYPEOF">
+    <meta name="keywords" content="深入理解 Kubernetes 之 API server, TYPEOF">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>k8s03 | TYPEOF</title>
+    <title>深入理解 Kubernetes 之 API server | TYPEOF</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">k8s03</h1>
+                    <h1 class="description center-align post-title">深入理解 Kubernetes 之 API server</h1>
                 </div>
             </div>
         </div>
@@ -477,7 +477,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    82 分
+                    81 分
                 </div>
                 
 
@@ -500,7 +500,7 @@
 <li>集群内部各个模块之间通信的枢纽：所有模块之间并不会互相调用，而是通过和 API Serve r打交道完成这部分的工作</li>
 <li>集群的安全控制:API Server 提供的验证和授权保证了整个集群的安全</li>
 </ul>
-<h2 id="API-server-工作原理"><a href="#API-server-工作原理" class="headerlink" title="API server 工作原理"></a>API server 工作原理</h2><p>![](/images/2020/API server.jpg)</p>
+<h2 id="API-server-工作原理"><a href="#API-server-工作原理" class="headerlink" title="API server 工作原理"></a>API server 工作原理</h2><p><img src="/images/2020/API_server.jpg" alt=""></p>
 <h3 id="声明式-API-设计"><a href="#声明式-API-设计" class="headerlink" title="声明式 API 设计"></a>声明式 API 设计</h3><p><strong>描述资源版本信息</strong></p>
 <pre><code>/api/{version}/{resource}/{action}</code></pre><p>上面是一个基础的 web url 通常我们都会为每个版本注册一个对应的 URL, 其中会包含很关键的两个信息即 version与 resource ,通过这两个信息,通常我们就可以知道这可能是某个资源的那个版本, 如果我们把后面的 action 也包裹进来,我们通常就可以知道对应的资源的那个具体操作</p>
 <p><strong>Group组信息</strong></p>
@@ -3293,9 +3293,9 @@ InstallREST()-&gt; Install()-&gt; registerResourceHandlers()</code></pre><pre cl
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="k8s03">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深入理解 Kubernetes 之 API server">
                         
-                        <span class="card-title">k8s03</span>
+                        <span class="card-title">深入理解 Kubernetes 之 API server</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
