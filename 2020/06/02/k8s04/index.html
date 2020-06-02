@@ -528,7 +528,8 @@
 <li>通过一系列的 <code>priority functions</code> 给剩下的 node 排一个等级，寻找能够运行 pod 的若干 node 中最合适的一个 node；</li>
 <li>得分最高的一个 node，也就是被 <code>priority functions</code> 选中的 node 胜出了，获得了跑对应 pod 的资格。</li>
 </ol>
-<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="主流程："><a href="#主流程：" class="headerlink" title="主流程："></a>主流程：</h3><p>scheduler的源码可以分为3层：</p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="主流程："><a href="#主流程：" class="headerlink" title="主流程："></a>主流程：</h3><p><img src="/images/2020/scheduler.png" alt=""></p>
+<p>scheduler的源码可以分为3层：</p>
 <ul>
 <li><code>cmd/kube-scheduler/scheduler.go</code>: main() 函数入口位置，在scheduler过程开始被调用前的一系列初始化工作。</li>
 <li><code>pkg/scheduler/scheduler.go</code>: 调度框架的整体逻辑，在具体的调度算法之上的框架性的代码。</li>
@@ -1988,7 +1989,7 @@ func PredicateOrdering() []string {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">xie hui</a>
+                    <a href="/about" rel="external nofollow noreferrer">Rootkit</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -2011,7 +2012,7 @@ func PredicateOrdering() []string {
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">xie hui</a>
+                    <a href="/about" target="_blank">Rootkit</a>
                     !
                 </span>
             </div>
@@ -2496,7 +2497,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="/about" target="_blank">Xie hui</a>
+            <a href="/about" target="_blank">rootkit</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
