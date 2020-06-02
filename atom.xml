@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xipfs.github.io/"/>
-  <updated>2020-05-27T07:26:53.662Z</updated>
+  <updated>2020-06-02T07:29:17.543Z</updated>
   <id>http://xipfs.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入理解 Kubernetes 之 Kube-scheduler</title>
+    <link href="http://xipfs.github.io/2020/06/02/k8s04/"/>
+    <id>http://xipfs.github.io/2020/06/02/k8s04/</id>
+    <published>2020-06-02T07:27:50.000Z</published>
+    <updated>2020-06-02T07:29:17.543Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;深入理解-Kubernetes-之-Kube-scheduler&quot;&gt;&lt;a href=&quot;#深入理解-Kubernetes-之-Kube-scheduler&quot; class=&quot;headerlink&quot; title=&quot;深入理解 Kubernetes 之
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Kubernetes" scheme="http://xipfs.github.io/categories/Kubernetes/"/>
+    
+    
+      <category term="Kubernetes" scheme="http://xipfs.github.io/tags/Kubernetes/"/>
+    
+  </entry>
   
   <entry>
     <title>深入理解 Kubernetes 之 API server</title>
