@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xipfs.github.io/"/>
-  <updated>2020-07-17T02:16:11.463Z</updated>
+  <updated>2020-07-17T02:41:58.204Z</updated>
   <id>http://xipfs.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>rust01</title>
-    <link href="http://xipfs.github.io/2020/07/17/rust01/"/>
-    <id>http://xipfs.github.io/2020/07/17/rust01/</id>
-    <published>2020-07-17T02:08:26.739Z</published>
-    <updated>2020-07-17T02:16:11.463Z</updated>
+    <title>Clion 调试 Rust</title>
+    <link href="http://xipfs.github.io/2020/07/17/rust/"/>
+    <id>http://xipfs.github.io/2020/07/17/rust/</id>
+    <published>2020-07-17T03:11:54.000Z</published>
+    <updated>2020-07-17T02:41:58.204Z</updated>
     
     <summary type="html">
     
@@ -29,13 +29,18 @@
       
         
         
-          &lt;p&gt;title: Clion 调试 Rust&lt;br&gt;date: 2020-07-17 18:12:19&lt;br&gt;author: Rootkit&lt;br&gt;top: false&lt;br&gt;mathjax: false&lt;br&gt;categories:
+          &lt;h2 id=&quot;安装-mingw&quot;&gt;&lt;a href=&quot;#安装-mingw&quot; class=&quot;headerlink&quot; title=&quot;安装 mingw&quot;&gt;&lt;/a&gt;安装 mingw&lt;/h2&gt;&lt;p&gt;安装 msys2 (包含 mingw-64 )&lt;/p&gt;
+&lt;p&gt;下载地址  &lt;a
         
       
     
     </summary>
     
     
+      <category term="Rust" scheme="http://xipfs.github.io/categories/Rust/"/>
+    
+    
+      <category term="Rust" scheme="http://xipfs.github.io/tags/Rust/"/>
     
   </entry>
   

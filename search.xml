@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>rust01</title>
-      <link href="/2020/07/17/rust01/"/>
-      <url>/2020/07/17/rust01/</url>
+      <title>Clion 调试 Rust</title>
+      <link href="/2020/07/17/rust/"/>
+      <url>/2020/07/17/rust/</url>
       
-        <content type="html"><![CDATA[<p>title: Clion 调试 Rust<br>date: 2020-07-17 18:12:19<br>author: Rootkit<br>top: false<br>mathjax: false<br>categories: rust<br>tags:</p><ul><li>Rust</li></ul><h2 id="安装-mingw"><a href="#安装-mingw" class="headerlink" title="安装 mingw"></a>安装 mingw</h2><p>安装 msys2 (包含 mingw-64 )</p><p>下载地址  <a href="https://www.msys2.org/" target="_blank" rel="noopener">https://www.msys2.org/</a> </p><p>开一个 mingw 的终端，安装编译工具：</p><pre><code> pacman -Syu pacman -S mingw-w64-x86_64-toolchain</code></pre><p>假设安装在 <code>c:\msys64</code> 目录下，则在系统的环境变量中，增加一个：</p><pre><code> MSYS2_HOME  C:\msys64 PATH        &lt;原来的路&gt;;%MSYS2_HOME%\bin;%MSYS2_HOME%\mingw64\bin</code></pre><h2 id="安装-rust-gnu-工具链"><a href="#安装-rust-gnu-工具链" class="headerlink" title="安装 rust gnu 工具链"></a>安装 rust gnu 工具链</h2><p>在 windows 上使用 rustup 安装的 rust 编译环境默认使用了 msvc 编译链，需要安装 gnu 编译链</p><pre><code> rustup install stable-gnu rustup default stable-gnu</code></pre><h2 id="设置-clion-编译工具链"><a href="#设置-clion-编译工具链" class="headerlink" title="设置 clion 编译工具链"></a>设置 clion 编译工具链</h2><p>在 clion 的 <code>File -&gt; Settings -&gt; Build, Execution, Deployment -&gt; Toolchains</code> ，加上一个 mingw 的工具链，设置目录为 msys2 中的 mingw64 目录。如 msys2 安装在 <code>c:\msys64</code> ，则目录为 <code>c:\msys64\mingw64</code> ，目录正确的情况下，make 、 c-compiler 、 c++ compiler 、 debugger 等自动找到。</p><p>完成这些设置后，就可以使用 clion 调试 rust 了</p><img src="/images/2020/rust01.jpg"><img src="/images/2020/rust02.png"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2 id="安装-mingw"><a href="#安装-mingw" class="headerlink" title="安装 mingw"></a>安装 mingw</h2><p>安装 msys2 (包含 mingw-64 )</p><p>下载地址  <a href="https://www.msys2.org/" target="_blank" rel="noopener">https://www.msys2.org/</a> </p><p>开一个 mingw 的终端，安装编译工具：</p><pre><code> pacman -Syu pacman -S mingw-w64-x86_64-toolchain</code></pre><p>假设安装在 <code>c:\msys64</code> 目录下，则在系统的环境变量中，增加一个：</p><pre><code> MSYS2_HOME  C:\msys64 PATH        &lt;原来的路&gt;;%MSYS2_HOME%\bin;%MSYS2_HOME%\mingw64\bin</code></pre><h2 id="安装-rust-gnu-工具链"><a href="#安装-rust-gnu-工具链" class="headerlink" title="安装 rust gnu 工具链"></a>安装 rust gnu 工具链</h2><p>在 windows 上使用 rustup 安装的 rust 编译环境默认使用了 msvc 编译链，需要安装 gnu 编译链</p><pre><code> rustup install stable-gnu rustup default stable-gnu</code></pre><h2 id="设置-clion-编译工具链"><a href="#设置-clion-编译工具链" class="headerlink" title="设置 clion 编译工具链"></a>设置 clion 编译工具链</h2><p>在 clion 的 <code>File -&gt; Settings -&gt; Build, Execution, Deployment -&gt; Toolchains</code> ，加上一个 mingw 的工具链，设置目录为 msys2 中的 mingw64 目录。如 msys2 安装在 <code>c:\msys64</code> ，则目录为 <code>c:\msys64\mingw64</code> ，目录正确的情况下，make 、 c-compiler 、 c++ compiler 、 debugger 等自动找到。</p><p>完成这些设置后，就可以使用 clion 调试 rust 了</p><img src="/images/2020/rust01.jpg"><img src="/images/2020/rust02.png"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      <categories>
+          
+          <category> Rust </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Rust </tag>
+            
+        </tags>
       
     </entry>
     
