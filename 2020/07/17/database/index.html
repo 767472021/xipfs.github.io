@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深入理解 Kubernetes 概述, TYPEOF">
+    <meta name="keywords" content="数据库学习指南, TYPEOF">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深入理解 Kubernetes 概述 | TYPEOF</title>
+    <title>数据库学习指南 | TYPEOF</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,7 +314,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深入理解 Kubernetes 概述</h1>
+                    <h1 class="description center-align post-title">数据库学习指南</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Kubernetes/">
-                                <span class="chip bg-color">Kubernetes</span>
+                            <a href="/tags/Database/">
+                                <span class="chip bg-color">Database</span>
                             </a>
                         
                     </div>
@@ -443,8 +443,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Kubernetes/" class="post-category">
-                                Kubernetes
+                            <a href="/categories/Database/" class="post-category">
+                                Database
                             </a>
                         
                     </div>
@@ -456,21 +456,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-21
+                    2020-07-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-02
+                    2020-07-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    757
                 </div>
                 
 
@@ -492,58 +492,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Kubernetes-架构设计"><a href="#Kubernetes-架构设计" class="headerlink" title="Kubernetes 架构设计"></a>Kubernetes 架构设计</h1><p><img src="/images/2020/Kubernetes-architecture.png" alt=""></p>
-<h2 id="Kubernetes-流程"><a href="#Kubernetes-流程" class="headerlink" title="Kubernetes 流程"></a>Kubernetes 流程</h2><p><img src="/images/2020/what-happens-when-k8s.png" alt=""></p>
-<h2 id="Kubernetes-核心组件"><a href="#Kubernetes-核心组件" class="headerlink" title="Kubernetes 核心组件"></a>Kubernetes 核心组件</h2><h3 id="Kubectl"><a href="#Kubectl" class="headerlink" title="Kubectl"></a>Kubectl</h3><p>kubectl 是用户与 Kubernetes 交互的命令行工具。用户使用 kubectl 工具调用 Apiserver 的接口来与 Kubernetes服务进行交互。</p>
-<p>更多 kubectl 信息请参考：<a href="k8s2.md">深入理解 Kubernetes 之 Kubectl</a></p>
-<h3 id="Kube-API-server"><a href="#Kube-API-server" class="headerlink" title="Kube API server"></a>Kube API server</h3><p>Kubernetes API server 为 api 对象验证并配置数据，包括 pods、 services、 replicationcontrollers 和其它 api 对象。API Server 提供 REST 操作和到集群共享状态的前端，所有其他组件通过它进行交互，是整个系统的数据总线和数据中心。</p>
-<p>Kubernetes 中的其它组件都不会和 etcd 进行交互，只有 API Server 可以和 etcd 进行交互,API Server  具有如下功能：</p>
-<ul>
-<li>整个集群管理的 API 接口：所有对集群进行的查询和管理都是通过 API 进行</li>
-<li>集群内部各个模块之间通信的枢纽：所有模块之间并不会互相调用，而是通过和 API Serve r打交道完成这部分的工作</li>
-<li>集群的安全控制: API Server 提供的验证和授权和访问控制保证了整个集群的安全</li>
+                <h1 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 🎥 <a href="https://www.youtube.com/playlist?list=PLSE8ODhjZXjbohkNBWQs_otTrBTrjyohi" target="_blank" rel="noopener"><strong>CMU 15-445 Intro to Database Systems</strong></a> (A Pavlo 2019)</li>
+<li><input checked="" disabled="" type="checkbox"> 🎥 <a href="https://www.youtube.com/playlist?list=PLSE8ODhjZXjasmrEd2_Yi1deeE360zv5O" target="_blank" rel="noopener"><strong>CMU 15-721 Advanced Database Systems</strong></a> (A Pavlo 2020)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://www.databass.dev" target="_blank" rel="noopener"><strong>Database Internals</strong></a> (A Petrov 2019)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://dataintensive.net/" target="_blank" rel="noopener"><strong>Designing Data-Intensive Applications</strong></a> (M Kleppmann 2017)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.redbook.io" target="_blank" rel="noopener"><strong>Readings in Database Systems</strong></a> (P Bailis, JM Hellerstein, M Stonebraker) <em>“The Red Book”</em></li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf" target="_blank" rel="noopener">Architecture of a Database System</a> (JM Hellerstein, M Stonebraker, J Hamilton 2007)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215" target="_blank" rel="noopener">Data and Reality</a> (W Kent, S Hoberman 2012)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://www.db-book.com/db7/index.html" target="_blank" rel="noopener">Database System Concepts</a> (A Silberschatz, HF Korth, S Sudarshan 2019)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://www.amazon.com/Fundamentals-Database-Systems-Ramez-Elmasri/dp/0133970779" target="_blank" rel="noopener">Fundamentals of Database Systems</a> (R Elmasri, SB Navathe 2015)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://dl.acm.org/doi/book/10.1145/3226595" target="_blank" rel="noopener">Making Databases Work: the Pragmatic Wisdom of Michael Stonebraker</a> (ML Brodie 2018)</li>
+<li><input checked="" disabled="" type="checkbox"> 🎥 <a href="https://archive.org/details/UCBerkeley_Course_Computer_Science_186#" target="_blank" rel="noopener">UC Berkeley CS186 Introduction to Database Systems</a> (J Hellerstein 2012)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://db.cs.cmu.edu/papers/2016/pavlo-newsql-sigmodrec2016.pdf" target="_blank" rel="noopener">What’s Really New with NewSQL?</a> (A Pavlo, M Aslett 2016)</li>
 </ul>
-<p>更多 Kube API server 信息请参考：<a href="k8s3.md">深入理解 Kubernetes 之 Kube API server</a></p>
-<h3 id="Controller-manager"><a href="#Controller-manager" class="headerlink" title="Controller manager"></a>Controller manager</h3><p>Controller Manager 就是集群内部的管理控制中心，由负责不同资源的多个 Controller 构成，共同负责集群内的 Node、Pod 等所有资源的管理，比如当通过 Deployment 创建的某个 Pod 发生异常退出时，RS Controller 便会接受并处理该退出事件，并创建新的 Pod 来维持预期副本数。</p>
-<p>几乎每种特定资源都有特定的 Controller 维护管理以保持预期状态，而 Controller Manager 的职责便是把所有的 Controller 聚合起来：</p>
-<ol>
-<li>提供基础设施降低 Controller 的实现复杂度</li>
-<li>启动和维持 Controller 的正常运行</li>
-</ol>
-<p>可以这么说，Controller 保证集群内的资源保持预期状态，而 Controller Manager 保证了 Controller 保持在预期状态。</p>
-<p>更多 Controller manager 信息请参考：<a href="k8s4.md">深入理解 Kubernetes 之 Controller manager</a></p>
-<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>调度是 Kubernetes 集群中进行容器编排工作最重要的一环，在 Kubernetes中，Controller manager 负责创建Pod，Kubelet 负责执行 Pod，而 Scheduler 就是负责安排 Pod 到具体的 Node，它通过 API Server 提供的接口监听 Pod 任务列表，获取待调度 pod，然后根据一系列的预选策略和优选策略给各个 Node 节点打分，然后将Pod 发送到得分最高的 Node 节点上，由 kubelet 负责执行具体的任务内容。</p>
-<p>更多 Scheduler  信息请参考：<a href="k8s5.md">深入理解 Kubernetes 之 Scheduler </a></p>
-<h3 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h3><p>每个Node都会启动一个kubelet，主要作用有：</p>
-<ul>
-<li><p>Node管理</p>
-<ul>
-<li><p>注册节点信息；</p>
-</li>
-<li><p>通过 cAdvisor 监控容器和节点的资源；</p>
-</li>
-<li><p>定期向 API server 汇报本节点资源消耗情况</p>
-</li>
+<h2 id="Transactions"><a href="#Transactions" class="headerlink" title="Transactions"></a>Transactions</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf" target="_blank" rel="noopener"><strong>A Critique of ANSI SQL Isolation Levels</strong></a> (H Berenson et al 1995)</li>
+<li><input checked="" disabled="" type="checkbox"> 🔗 <a href="https://jepsen.io/consistency" target="_blank" rel="noopener"><strong>Consistency Models</strong></a> (Jepsen 2016)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://pmg.csail.mit.edu/papers/icde00.pdf" target="_blank" rel="noopener"><strong>Generalized Isolation Level Definitions</strong></a> (A Adya, B Liskov, P ONeil 2000)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="https://www.amazon.com/Transaction-Processing-Concepts-Techniques-Management/dp/1558601902#customerReviews" target="_blank" rel="noopener"><strong>Transaction Processing: Concepts and Techniques</strong></a> (J Gray, A Reuter 1992)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.bailis.org/papers/acidrain-sigmod2017.pdf" target="_blank" rel="noopener">ACIDRain: Concurrency-Related Attacks on Database-Backed Web Applications</a> (P Bailis, T Warszawski 2017)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://yingjunwu.github.io/papers/vldb2017.pdf" target="_blank" rel="noopener">An Empirical Evaluation of In-Memory Multi-Version Concurrency Control</a> (Y Wu et al 2017)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://delivery.acm.org/10.1145/2820000/2815404/p263-zhang.pdf" target="_blank" rel="noopener">Building Consistent Transactions with Inconsistent Replication</a> (I Zhang et al 2015)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf" target="_blank" rel="noopener">Calvin: Fast Distributed Transactions for Partitioned Database Systems</a> (DJ Abadi et al 2012) <em>“The Calvin paper”</em></li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://arxiv.org/pdf/1512.00168.pdf" target="_blank" rel="noopener">Consistency in Non-Transactional Distributed Storage Systems</a> (P Viotti, M Vukolić 2016)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.vldb.org/pvldb/vol7/p181-bailis.pdf" target="_blank" rel="noopener">Highly Available Transactions: Virtues and Limitations</a> (P Bailis, JM Hellerstein et al 2013)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://dspace.mit.edu/bitstream/handle/1721.1/16279/05331643-MIT.pdf" target="_blank" rel="noopener">Naming and Synchronization in a Decentralized Computer System</a> (DP Reed 1978) <em>“The MVCC paper”</em></li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.jmfaleiro.com/pubs/multiversion-vldb2015.pdf" target="_blank" rel="noopener">Rethinking Serializable Multiversion Concurrency Control</a> (JM Faleiro, DJ Abadi 2015)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.bailis.org/papers/ramp-sigmod2014.pdf" target="_blank" rel="noopener">Scalable Atomic Visibility with RAMP Transactions</a> (P Bailis et al 2014)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://courses.cs.washington.edu/courses/cse444/08au/544M/READING-LIST/fekete-sigmod2008.pdf" target="_blank" rel="noopener">Serializable Isolation for Snapshot Databases</a> (MJ Cahill, U Röhm, AD Fekete 2008)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="http://justinjaffray.com/what-does-write-skew-look-like/" target="_blank" rel="noopener">What Does Write Skew Look Like</a> (J Jaffray 2018)</li>
 </ul>
-</li>
-<li><p>Pod管理</p>
-</li>
-<li><p>所有非通过 API server 方式创建的 Pod 叫 Static Pod，这里我们讨论的都是通过 API server 创建的普通Pod。kubelet 通过 API server 监听 etcd，所有针对 Pod 的操作都会被监听到，如果其中有涉及到本节点的 Pod，则按照要求进行创建、修改、删除等操作。</p>
-</li>
-<li><p>容器健康检查</p>
-<p>kubelet通过两类探针检查容器的状态：</p>
-<ul>
-<li><p>LivenessProbe：判断一个容器是否健康，如果不健康则会删除这个容器，并按照 restartPolicy 看是否重启这个容器。实现的方式有 ExecAction（在容器内部执行一个命令）、TCPSocketAction（如果端口可以被访问，则健康）、HttpGetAction（如果返回200则健康）。</p>
-</li>
-<li><p>ReadinessProbe：用于判断容器是否启动完全。如果返回的是失败，则 Endpoint Controller 会将这个Pod 的 Endpoint从Service 的 Endpoint 列表中删除。也就是，不会有请求转发给它。</p>
-</li>
+<h2 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www2.cs.duke.edu/courses/compsci516/cps216/spring03/papers/selinger-etal-1979.pdf" target="_blank" rel="noopener">Access Path Selection in a Relational Database Management System</a> (PG Selinger et al 1979)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://web.stanford.edu/class/cs345d-01/rl/chaudhuri98.pdf" target="_blank" rel="noopener">An Overview of Query Optimization in Relational Systems</a> (S Chaudhuri 1998)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="http://pi3.informatik.uni-mannheim.de/~moer/querycompiler.pdf" target="_blank" rel="noopener">Building Query Compilers</a> (G Moerkotte 2014)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.cs.purdue.edu/homes/rompf/papers/tahboub-sigmod18.pdf" target="_blank" rel="noopener">How to Architect a Query Compiler, Revisited</a> (RY Tahboub, GM Essertel, T Rompf 2018)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.vldb.org/conf/1996/P087.PDF" target="_blank" rel="noopener">Optimization of Queries with User-Defined Predicates</a> (S Chaudhur, K Shim 1999)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.cse.iitb.ac.in/infolab/Data/Courses/CS632/Papers/Cascades-graefe.pdf" target="_blank" rel="noopener">The Cascades Framework for Query Optimization</a> (G Graefe 1995)</li>
 </ul>
-</li>
+<h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://db.in.tum.de/~leis/papers/ART.pdf" target="_blank" rel="noopener">The Adaptive Radix Tree: ARTful Indexing for Main-Memory Databases</a> (V Leis, A Kemper, T Neumann 2013)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://cs.stanford.edu/people/chrismre/cs345/rl/aries.pdf" target="_blank" rel="noopener">Aries: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging</a> (C Mohan et al 1992)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.eecs.harvard.edu/~margo/cs165/papers/gp-lsm.pdf" target="_blank" rel="noopener">bLSM: A General Purpose Log Structured Merge Tree</a> (R Sears, R Ramakrishnan 2012)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://www.cs.cmu.edu/~huanche1/publications/open_bwtree.pdf" target="_blank" rel="noopener">Building a Bw-Tree Takes More Than Just Buzz Words</a> (Z Wang et al 2018)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://greensky00.github.io/pdf/jungle_hotstorage19.pdf" target="_blank" rel="noopener">Jungle: Towards Dynamically Adjustable Key-Value Store by Combining LSM-Tree and Copy-On-Write B+-Tree</a> (JS Ahn et al 2019)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bw-tree-icde2013-final.pdf" target="_blank" rel="noopener">The Bw-Tree: A B-tree for New Hardware Platforms</a> (JJ Levandoski, DB Lomet, S Sengupta 2013)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.cs.umb.edu/~poneil/lsmtree.pdf" target="_blank" rel="noopener">The Log-Structured Merge Tree</a> (P O’Neil, E Cheng, D Gawklik, E O’Neil 1996)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://cgi.di.uoa.gr/~ad/M149/ubiquitous_btree.pdf" target="_blank" rel="noopener">The Ubiquitous B-Tree</a> (D Comer 1979)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.usenix.org/system/files/conference/fast16/fast16-papers-lu.pdf" target="_blank" rel="noopener">WiscKey: Separating Keys from Values in SSD-Conscious Storage</a> (L Lu, TS Pillai, AC Arpaci-Dusseau, RH Arpaci-Dusseau 2016)</li>
 </ul>
-<p>更多 Kubelet信息请参考：<a href="k8s6.md">深入理解 Kubernetes 之 Kubelet</a></p>
-<h3 id="Kube-proxy"><a href="#Kube-proxy" class="headerlink" title="Kube proxy"></a>Kube proxy</h3><p>每个 Node 上都运行着一个 kube-proxy 进程，它在本地建立一个 SocketServer 接收和转发请求，可以看作是Service 的透明代理和负载均衡器，负载均衡策略模式是 Round Robin。也可以设置会话保持，策略使用的是 ClientIP，将同一个 ClientIP 的请求转发同一个 Endpoint 上。</p>
-<p>Service 的 Cluster IP 和 NodePort 等概念都是 kube-proxy 服务通过 iptables 的 NAT 转换实现，iptables 机制针对的是 kube-proxy 监听的端口，所以每个 Node 上都要有 kube-proxy。</p>
-<p>更多 Kube proxy 信息请参考：<a href="k8s7.md">深入理解 Kubernetes 之 Kube proxy</a></p>
+<h2 id="Verification"><a href="#Verification" class="headerlink" title="Verification"></a>Verification</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 🎥 <a href="https://www.youtube.com/watch?v=Np46NQ6lqP8" target="_blank" rel="noopener">SQLancer: Finding Logic Bugs in Database Management Systems</a> (M Rigger 2020)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-zheng_mai.pdf" target="_blank" rel="noopener">Torturing Databases for Fun and Profit</a> (M Zheng et al 2014)</li>
+</ul>
+<h2 id="Vendors"><a href="#Vendors" class="headerlink" title="Vendors"></a>Vendors</h2><h3 id="CockroachDB"><a href="#CockroachDB" class="headerlink" title="CockroachDB"></a>CockroachDB</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 🔗 <a href="https://www.cockroachlabs.com/docs/stable/architecture/overview.html" target="_blank" rel="noopener"><strong>Architecture Overview</strong></a></li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://dl.acm.org/doi/pdf/10.1145/3318464.3386134" target="_blank" rel="noopener"><strong>CockroachDB: The Resilient Geo-Distributed SQL Database</strong></a> (R Taft et al 2020)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="https://www.cockroachlabs.com/blog/serializable-lockless-distributed-isolation-cockroachdb/" target="_blank" rel="noopener"><strong>Serializable, Lockless, Distributed: Isolation in CockroachDB</strong></a> (M Tracy 2016)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="https://www.cockroachlabs.com/blog/building-cost-based-sql-optimizer/" target="_blank" rel="noopener">How We Built a Cost-Based SQL Optimizer</a> (A Kimball 2018)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="https://www.cockroachlabs.com/blog/living-without-atomic-clocks/" target="_blank" rel="noopener">Living Without Atomic Clocks</a> (S Kimball 2016)</li>
+</ul>
+<h3 id="FaunaDB"><a href="#FaunaDB" class="headerlink" title="FaunaDB"></a>FaunaDB</h3><ul>
+<li><input disabled="" type="checkbox"> 💬 <a href="https://fauna.com/blog/distributed-consistency-at-scale-spanner-vs-calvin" target="_blank" rel="noopener">Spanner vs. Calvin: Distributed Consistency at Scale</a> (DJ Abadi 2017)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="https://fauna.com/blog/time-traveling-databases" target="_blank" rel="noopener">Time-Traveling Databases: Exploring Temporality in FaunaDB</a> (M Freels 2016)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="https://fauna.com/blog/unifying-relational-document-graph-and-temporal-data-models" target="_blank" rel="noopener">Unifying Relational, Document, Graph, and Temporal Data Models</a> (C Anderson 2018)</li>
+</ul>
+<h3 id="Google-Bigtable"><a href="#Google-Bigtable" class="headerlink" title="Google Bigtable"></a>Google Bigtable</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf" target="_blank" rel="noopener"><strong>Bigtable: A Distributed Storage System for Structured Data</strong></a> (F Chang et al 2006) <em>“The Bigtable paper”</em></li>
+</ul>
+<h3 id="Google-F1"><a href="#Google-F1" class="headerlink" title="Google F1"></a>Google F1</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/41344.pdf" target="_blank" rel="noopener"><strong>F1: A Distributed SQL Database That Scales</strong></a> <em>“The F1 paper”</em></li>
+</ul>
+<h3 id="Google-Spanner"><a href="#Google-Spanner" class="headerlink" title="Google Spanner"></a>Google Spanner</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/39966.pdf" target="_blank" rel="noopener"><strong>Spanner: Google’s Globally-Distributed Database</strong></a> (J Corbett et al 2012) <em>“The Spanner paper”</em></li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://dl.acm.org/doi/pdf/10.1145/3035918.3056103" target="_blank" rel="noopener">Spanner: Becoming a SQL System</a> (DF Bacon et al 2017)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45855.pdf" target="_blank" rel="noopener">Spanner, TrueTime &amp; The CAP Theorem</a> (E Brewer 2017)</li>
+</ul>
+<h3 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://arxiv.org/pdf/1901.01973.pdf" target="_blank" rel="noopener"><strong>Looking Back at Postgres</strong></a> (JM Hellerstein 2019)</li>
+<li><input checked="" disabled="" type="checkbox"> 💬 <a href="https://brandur.org/postgres-atomicity" target="_blank" rel="noopener">How Postgres Makes Transactions Atomic</a> (B Leach 2017)</li>
+<li><input checked="" disabled="" type="checkbox"> 📄 <a href="https://drkp.net/papers/ssi-vldb12.pdf" target="_blank" rel="noopener">Serializable Snapshot Isolation in PostgreSQL</a> (DRK Ports, K Grittner 2012)</li>
+<li><input checked="" disabled="" type="checkbox"> 📖 <a href="http://www.interdb.jp/pg/" target="_blank" rel="noopener">The Internals of PostgreSQL</a> (H Suzuki 2015)</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -587,7 +618,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xipfs.github.io/2020/05/21/k8s01/">http://xipfs.github.io/2020/05/21/k8s01/</a>
+                    <a href="http://xipfs.github.io/2020/07/17/database/">http://xipfs.github.io/2020/07/17/database/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -625,8 +656,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Kubernetes/">
-                                    <span class="chip bg-color">Kubernetes</span>
+                                <a href="/tags/Database/">
+                                    <span class="chip bg-color">Database</span>
                                 </a>
                             
                         </div>
@@ -798,26 +829,78 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/05/21/k8s02/">
+                <a href="/2020/07/17/rust/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="深入理解 Kubernetes 之 Kubectl">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Clion 调试 Rust">
                         
-                        <span class="card-title">深入理解 Kubernetes 之 Kubectl</span>
+                        <span class="card-title">Clion 调试 Rust</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            深入理解 Kubectlkubectl 是 Kubernetes 集群的命令行工具，通过 kubectl 能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署。运行 kubectl 命令的语法如下所示：
-kubectl [comm
+                            安装 mingw安装 msys2 (包含 mingw-64 )
+下载地址  https://www.msys2.org/ 
+开一个 mingw 的终端，安装编译工具：
+ pacman -Syu
+ pacman -S mingw-w64-x8
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-17
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Rust/" class="post-category">
+                                    Rust
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Rust/">
+                        <span class="chip bg-color">Rust</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/02/k8s04/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="深入理解 Kubernetes 之 Kube-scheduler">
+                        
+                        <span class="card-title">深入理解 Kubernetes 之 Kube-scheduler</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            深入理解 Kubernetes 之 Kube-scheduler概述Kube-scheduler 是 kubernetes 的核心组件之一，也是所有核心组件之间功能比较单一的，其代码也相对容易理解。kube-scheduler 的目的就是为
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -835,67 +918,6 @@ kubectl [comm
                     
                     <a href="/tags/Kubernetes/">
                         <span class="chip bg-color">Kubernetes</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/05/20/libra/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="深入理解 Libra">
-                        
-                        <span class="card-title">深入理解 Libra</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1. 共识区块链技术中，共识算法是其中核心的一个组成部分。它包含两层含义：
-
-多个节点对某个数据达成一致共识。
-多个节点对多个数据的顺序达成一致共识。
-
-共识算法主要用在以下三种场景：
-
-私链
-私链的共识算法即传统分布式系统里的共识算法，比
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Blockchain/" class="post-category">
-                                    Blockchain
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Blockchain/">
-                        <span class="chip bg-color">Blockchain</span>
-                    </a>
-                    
-                    <a href="/tags/Libra/">
-                        <span class="chip bg-color">Libra</span>
                     </a>
                     
                 </div>
